@@ -1,0 +1,72 @@
+package com.univpm.TweetAnalyzer.model;
+
+public class SingleStats {
+
+    private String Hashtag;
+    private long Likes, Retweets, PostsPerDay;
+    private String PercLikes, PercRetweets;
+
+	public SingleStats() {
+	}
+    
+    public SingleStats(String Hashtag, String PercLikes, String PercRetweets,
+    		long Likes, long Retweets, long PostsPerDay) {
+    	
+    	this.Hashtag = Hashtag;
+    	this.Likes = Likes;
+    	this.PercLikes = PercLikes;
+    	this.Retweets = Retweets;
+    	this.PercRetweets = PercRetweets;
+    	this.PostsPerDay = PostsPerDay;
+        
+    }
+    
+	public String getHashtag() {
+		return Hashtag;
+	}
+
+	public void setHashtag(String hashtag) {
+		Hashtag = hashtag;
+	}
+
+	public long getPostsPerDay() {
+		return PostsPerDay;
+	}
+
+	public void setPostsPerDay(long postsPerDay) {
+		PostsPerDay = postsPerDay;
+	}
+
+	public long getLikes() {
+		return Likes;
+	}
+
+	public void setLikes(long likes) {
+		Likes = likes;
+	}
+
+	public long getRetweets() {
+		return Retweets;
+	}
+
+	public void setRetweets(long retweets) {
+		Retweets = retweets;
+	}
+
+	public String getPercLikes() {
+		return PercLikes;
+	}
+
+	public void setPercLikes(String percLikes) {
+		PercLikes = percLikes;
+	}
+
+	public String getPercRetweets() {
+		return PercRetweets;
+	}
+
+	public void setPercRetweets(String percRetweets) {
+		PercRetweets = percRetweets;
+	}
+    
+}
