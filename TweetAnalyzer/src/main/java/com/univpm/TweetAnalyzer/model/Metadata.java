@@ -1,11 +1,14 @@
 package com.univpm.TweetAnalyzer.model;
 
+/**
+ * Questa è la classe le cui Istanze rappresentano i Metadati.
+ */
+
 public class Metadata {
 	
 	private String Metadata, WrapperClass;
 	
 	public Metadata(String Metadata, String WrapperClass) {
-		super();
 		this.Metadata = Metadata;
 		this.WrapperClass = WrapperClass;
 	}

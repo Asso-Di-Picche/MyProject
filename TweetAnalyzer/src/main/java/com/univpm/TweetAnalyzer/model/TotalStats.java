@@ -2,6 +2,11 @@ package com.univpm.TweetAnalyzer.model;
 
 import java.util.List;
 
+/**
+ * Classe che istanzia Oggetti contenenti Statistiche, svolte su
+ * tutti i Tweet scaricati.
+ */
+
 public class TotalStats {
 
     private long totRetweets, totLikes;

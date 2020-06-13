@@ -12,8 +12,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.univpm.TweetAnalyzer.model.ErrorResponse;
 
+/**
+ * In questa Classe vengono Gestite le Eccezioni Peronalizzate
+ */
+
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
+	
+	/**
+	 * Questo Metodo inizializza un Oggetto di tipo Error mediante una Stringa.
+	 * @param ex Contiene l'Eccezione che è stata lanciata.
+	 * @param SolutionDetails contiene informazioni su come evitare il lancio dell'Eccezione.
+	 * @return un Oggetto Error con Informazioni riguardanti il lancio di un'Eccezione.
+	 */
 	
 	private static ErrorResponse ErrorResponseInitialization(Exception ex, String SolutionDetails) {
 		Map<String, Object> Details= new HashMap<>();
@@ -25,27 +36,52 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		return Error;
 	}
 	
+	/**
+	 * Questo Metodo inizializza un Oggetto di tipo Error mediante una Mappa.
+	 * @param ex Contiene l'Eccezione che è stata lanciata.
+	 * @param SolutionDetails contiene informazioni su come evitare il lancio dell'Eccezione.
+	 * @return un Oggetto Error con Informazioni riguardanti il lancio di un'Eccezione.
+	 */
+	
 	private static ErrorResponse ErrorResponseInitialization(Exception ex, Map<String, Object> SolutionDetails) {
 		Map<String, Object> Details= new HashMap<>();
-		
 		String Message = ex.getLocalizedMessage();
+		
 		Details.put("ExceptionType", ex.getClass().getSimpleName());
 		Details.put("SolutionsDetails", SolutionDetails);
 		ErrorResponse Error = new ErrorResponse(Message, Details);
 		return Error;
 	}
 	
+	/**
+	 * Questo Metodo viene chiamato al lancio di FilterNotFoundException.
+	 * @param ex contiene una FilterNotFoundException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
+	
 	@ExceptionHandler(FilterNotFoundException.class)
-	public final ResponseEntity<ErrorResponse> handleFilterNotFoundException(FilterNotFoundException ex, WebRequest request){
+	public final ResponseEntity<ErrorResponse> handleFilterNotFoundException(FilterNotFoundException ex){
 		ErrorResponse Error = ErrorResponseInitialization(ex, "Use An Allowed Filter");
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Questo Metodo viene chiamato al lancio di IllegalFilterKeyException.
+	 * @param ex contiene una IllegalFilterKeyException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
+	
 	@ExceptionHandler(IllegalFilterKeyException.class)
-	public final ResponseEntity<ErrorResponse> handleIllegalFilterKeyException(IllegalFilterKeyException ex, WebRequest request){
+	public final ResponseEntity<ErrorResponse> handleIllegalFilterKeyException(IllegalFilterKeyException ex){
 		ErrorResponse Error = ErrorResponseInitialization(ex, "Use a Recognizable Filter Key");
 		return new ResponseEntity<>(Error, HttpStatus.EXPECTATION_FAILED);
 	}
+	
+	/**
+	 * Questo Metodo viene chiamato al lancio di IllegalFilterValueException.
+	 * @param ex contiene una IllegalFilterValueException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
 	
 	@ExceptionHandler(IllegalFilterValueException.class)
 	public final ResponseEntity<ErrorResponse> handleIllegalFilterValueException(IllegalFilterValueException ex, WebRequest request){
@@ -57,6 +93,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<>(Error, HttpStatus.EXPECTATION_FAILED);
 	}
 	
+	/**
+	 * Questo Metodo viene chiamato al lancio di IllegalTimeException.
+	 * @param ex contiene una IllegalTimeException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
+	
 	@ExceptionHandler(IllegalTimeException.class)
 	public final ResponseEntity<ErrorResponse> handleIllegalTimeException(IllegalTimeException ex, WebRequest request){
 		Map<String, Object> SolutionDetails = new HashMap<>();
@@ -66,6 +108,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		ErrorResponse Error = ErrorResponseInitialization(ex, SolutionDetails);
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}
+	
+	/**
+	 * Questo Metodo viene chiamato al lancio di IllegalFilterValueSizeException.
+	 * @param ex contiene una IllegalFilterValueSizeException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
 	
 	@ExceptionHandler(IllegalFilterValueSizeException.class)
 	public final ResponseEntity<ErrorResponse> handleIllegalFilterValueSizeException(IllegalFilterValueSizeException ex, WebRequest request){
@@ -77,6 +125,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Questo Metodo viene chiamato al lancio di StatisticsNotAppliedException.
+	 * @param ex contiene una StatisticsNotAppliedException.
+	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
+	 */
+	
 	@ExceptionHandler(StatisticsNotAppliedException.class)
 	public final ResponseEntity<ErrorResponse> handleStatisticsNotAppliedException(StatisticsNotAppliedException ex, WebRequest request){
 		Map<String, Object> SolutionDetails = new HashMap<>();
@@ -86,4 +140,5 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		ErrorResponse Error = ErrorResponseInitialization(ex, SolutionDetails);
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}
+	
 }

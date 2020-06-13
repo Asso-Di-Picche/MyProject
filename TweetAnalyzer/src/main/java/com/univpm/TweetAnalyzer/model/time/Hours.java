@@ -1,5 +1,9 @@
 package com.univpm.TweetAnalyzer.model.time;
 
+/**
+ * Classe le cui Istanze contengono un'Ora e un Minuto.
+ */
+
 public class Hours {
 	
 	private int hour;
