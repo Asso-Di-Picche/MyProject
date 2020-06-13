@@ -35,11 +35,11 @@ public class MultipleDateFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
+	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
 			throws IllegalTimeException {
 		Time[] cmpTime = new Time[2];
-		Map<Integer, Data> filteredAfter = new HashMap<>();
-		Map<Integer, Data> filteredBefore = new HashMap<>();
+		HashMap<Integer, Data> filteredAfter = new HashMap<Integer, Data>();
+		HashMap<Integer, Data> filteredBefore = new HashMap<Integer, Data>();
 		
 		Iterator<Map.Entry<String, Map<Integer, Data>>> iterator = tempData.entrySet().iterator();
 		
@@ -60,8 +60,8 @@ public class MultipleDateFilter extends BasicFilter{
 
 			filteredData.put(filteredDataKey, filteredBefore);
 			filteredDataKey = null;
-			filteredAfter = new HashMap<>();
-			filteredBefore = new HashMap<>();
+			filteredAfter = new HashMap<Integer, Data>();
+			filteredBefore = new HashMap<Integer, Data>();
 			
 		}
 		

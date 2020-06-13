@@ -14,7 +14,7 @@ public class SingleHashtagFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
+	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
 			throws IllegalFilterValueException {
 		try {
 			for(Map.Entry<String, Map<Integer, Data>> entry: tempData.entrySet())

@@ -28,7 +28,7 @@ public class SingleDateFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
+	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
 			throws IllegalTimeException {
 		Time cmpTime = null;
 		Map<Integer, Data> filteredDataValue = new HashMap<Integer, Data>();
@@ -41,7 +41,7 @@ public class SingleDateFilter extends BasicFilter{
 			
 			for(Map.Entry<Integer, Data> entry : tempMap.entrySet()) {
 				cmpTime = DateParsingService.cmpTimeIstance(entry);
-				if(this.filterType == "After")
+				if(BasicFilter.filterType == "After")
 					afterDate(filteredDataValue, entry, filterValue, cmpTime);
 				else 
 					beforeDate(filteredDataValue, entry, filterValue, cmpTime);

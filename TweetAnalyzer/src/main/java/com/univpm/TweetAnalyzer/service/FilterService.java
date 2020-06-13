@@ -43,7 +43,7 @@ public class FilterService {
 				
 				for(Object o : filterList) {
 					
-					Map<String, Object> tempMap = new ObjectMapper().convertValue(o, HashMap.class);
+					HashMap<String, Object> tempMap = new ObjectMapper().convertValue(o, HashMap.class);
 					Iterator<Map.Entry<String, Object>> entries = tempMap.entrySet().iterator();
 					Map.Entry<String, Object> entry = entries.next();
 					filterMap.put(entry.getKey(), entry.getValue());
