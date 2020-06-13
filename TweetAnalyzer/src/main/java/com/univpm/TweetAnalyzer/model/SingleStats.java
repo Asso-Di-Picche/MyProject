@@ -3,14 +3,15 @@ package com.univpm.TweetAnalyzer.model;
 public class SingleStats {
 
     private String Hashtag;
-    private long Likes, Retweets, PostsPerDay;
+    private long Likes, Retweets;
     private String PercLikes, PercRetweets;
+    private double PostsPerDay;
 
 	public SingleStats() {
 	}
     
     public SingleStats(String Hashtag, String PercLikes, String PercRetweets,
-    		long Likes, long Retweets, long PostsPerDay) {
+    		long Likes, long Retweets, double PostsPerDay) {
     	
     	this.Hashtag = Hashtag;
     	this.Likes = Likes;
@@ -29,11 +30,11 @@ public class SingleStats {
 		Hashtag = hashtag;
 	}
 
-	public long getPostsPerDay() {
+	public double getPostsPerDay() {
 		return PostsPerDay;
 	}
 
-	public void setPostsPerDay(long postsPerDay) {
+	public void setPostsPerDay(double postsPerDay) {
 		PostsPerDay = postsPerDay;
 	}
 

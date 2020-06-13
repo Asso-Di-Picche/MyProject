@@ -33,7 +33,7 @@ public class FilterService {
 			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
 		Map<String, Map<Integer, Data>> tempData = DatabaseClass.getDataMap();
 		filteredData = new HashMap<String, Map<Integer, Data>>();
-		HashMap<String, Object> filterMap = new HashMap<>();
+		HashMap<String, Object> filterMap = new HashMap<String, Object>();
 		String filterKey = null;
 		Object filterValue = null;
 				
@@ -62,9 +62,9 @@ public class FilterService {
 					filterValue = entry.getValue();
 					
 
-					filteredData = new HashMap<>();
+					filteredData = new HashMap<String, Map<Integer, Data>>();
 					filteredData = filterRun(tempData, filterKey, filterValue);
-					tempData = new HashMap<>();
+					tempData = new HashMap<String, Map<Integer, Data>>();
 					tempData = filteredData;
 				}
 				
