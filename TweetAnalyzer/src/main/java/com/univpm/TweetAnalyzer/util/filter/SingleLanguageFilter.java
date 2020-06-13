@@ -30,7 +30,7 @@ public class SingleLanguageFilter extends BasicFilter{
 			
 			filteredDataValue = filterDataValue(filteredDataValue, tempMap);
 			filteredData.put(filteredDataKey, filteredDataValue);
-			filteredDataKey = "";
+			filteredDataKey = null;
 			filteredDataValue = new HashMap<>();
 		}
 		

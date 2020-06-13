@@ -64,7 +64,7 @@ public abstract class LongDataFilter extends BasicFilter{
 				
 				filteredData.put(filteredDataKey, filteredDataValue);
 				
-				filteredDataKey = "";
+				filteredDataKey = null;
 				tempFilteredDataValue = new HashMap<Integer, Data>();
 				filteredDataValue = new HashMap<Integer, Data>();
 			
