@@ -11,8 +11,8 @@ public abstract class BasicFilter implements Filter{
 
 	public BasicFilter(Map<String, Map<Integer, Data>> tempData, String filterType) {
 		
-		this.filterType = filterType;
-		this.tempData = tempData;
+		BasicFilter.filterType = filterType;
+		BasicFilter.tempData = tempData;
 		
 	}
 	

@@ -3,6 +3,12 @@ package com.univpm.TweetAnalyzer.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe le cui Istanze servono a fornire informazioni dettagliate
+ * riguardo le eventuali Eccezioni Personalizzate lanciate durante
+ * l'esecuzione dell'Applicazione.
+ */
+
 public class ErrorResponse {
 	private String Message;
 	private Map<String, Object> Details = new HashMap<>();

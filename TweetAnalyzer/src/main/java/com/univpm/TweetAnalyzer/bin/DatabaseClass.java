@@ -21,6 +21,10 @@ import org.json.simple.parser.ParseException;
 import com.univpm.TweetAnalyzer.model.Data;
 import com.univpm.TweetAnalyzer.model.Metadata;
 
+/**
+ * Questa Classe inizializza un Database mediante gli Hashtag 
+ * presenti nella cartella hashtags.txt, modificabile dall'Utente.
+ */
 public class DatabaseClass {
 	
 	private static final String hashtagDirectory = "/Users/antoniobaio/Desktop/MyProject/TweetAnalyzer/Files/hashtags.txt";
@@ -34,17 +38,26 @@ public class DatabaseClass {
 		tweetObtain();
 	}
 	
+	/**
+	 * @return I Metadati inizializzati nel Costruttore della Classe.
+	 */
+	
 	public static ArrayList<Metadata> getMetadataList() {
 		return metadataList;
 	}
+	
+	/**
+	 * @return I Dati scaricati dall'API di Twitter.
+	 */
 	
 	public static Map<String, Map<Integer, Data>> getDataMap(){
 		return dataMap;
 	}
 	
-	public static String getHashtagDirectory() {
-		return hashtagDirectory;
-	}
+	/**
+	 * Qui vengono inizializzati Tutti i Metadati di Twitter che verranno
+	 * presi in esame dall'Applicazione.
+	 */
 	
 	public void metadataFill() {
 		metadataList.add(new Metadata("Hashtag", "String"));
@@ -56,6 +69,11 @@ public class DatabaseClass {
 		metadataList.add(new Metadata("Retweets", "Long"));
 		metadataList.add(new Metadata("Likes", "Long"));
 	}
+	
+	/**
+	 * È il metodo che compone l'URL da cui scaricare i Dati mediante
+	 * gli Hashtag contenuti nella corrispondente Directory.
+	 */
 	
 	public void urlsObtain() {
 		String hashtag;
@@ -84,6 +102,11 @@ public class DatabaseClass {
 				in.close();
 		}
 	}
+	
+	/**
+	 * Qui vengono letti e copiati brutalmente su Stringa i Tweet presenti
+	 * in ciascun URL.
+	 */
 	
 	public void tweetObtain() throws IOException, InterruptedException {
 		String info = "";
@@ -119,6 +142,9 @@ public class DatabaseClass {
 			System.out.println(ex.getClass().getSimpleName() + ": hashtags.txt File is Compromised!");
 		}
 	}
+	/**
+	 * Questo metodo serve ad Associare ciascun Hashtag ai corrispondenti Tweet Scaricati. 
+	 */
 	
 	public static String hashtagObtain(String url) throws InterruptedException{
 		String hashtag = "";
@@ -142,6 +168,13 @@ public class DatabaseClass {
 		}
 		return null;
 	}
+	
+	/**
+	 * Questo è il metodo che Memorizza su HashMap i Dati precedentemente
+	 * ottenuti mediante URL.
+	 * @param info Contiene i Tweet associati ad hashtag
+	 * @param hashtag Contiene l'hashtag dei corrispondenti Tweet
+	 */
 	
 	public void tweetDownload(String info, String hashtag) throws InterruptedException {
 		Map<Integer, Data> dataHashtag = new HashMap<Integer, Data>();

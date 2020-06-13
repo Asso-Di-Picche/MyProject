@@ -19,7 +19,7 @@ public class MultipleLanguageFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
+	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
 			throws IllegalTimeException, IllegalFilterValueException, IllegalFilterValueSizeException {
 		Map<Integer, Data> filteredDataValue = new HashMap<>();
 		Iterator<Map.Entry<String, Map<Integer, Data>>> iterator = tempData.entrySet().iterator();

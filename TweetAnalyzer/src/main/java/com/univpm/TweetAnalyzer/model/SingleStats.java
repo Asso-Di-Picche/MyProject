@@ -1,5 +1,10 @@
 package com.univpm.TweetAnalyzer.model;
 
+/**
+ * Classe le cui Istanze servono a contenere le Statistiche,
+ * svolte sui Tweet in base ad un Hashtag corrispondente.
+ */
+
 public class SingleStats {
 
     private String Hashtag;

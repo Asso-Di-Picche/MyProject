@@ -2,6 +2,11 @@ package com.univpm.TweetAnalyzer.model.time;
 
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 
+/**
+ * Classe i cui Oggetti contengono un dato Giorno, Mese ed Anno,
+ * un'Ora e un Minuto.
+ */
+
 public class Time {
 	
 	private Date date;
@@ -12,6 +17,13 @@ public class Time {
 		this.date = date;
 		this.hours = hours;
 	}
+	
+	/**
+	 * Questo Metodo serve a confrontare un Oggetto di tipo Time con un altro di Riferimento.
+	 * @param cmpTime è un Oggetto di tipo Time.
+	 * @return true Solamente se cmpTime contiene un Tempo successivo a quello di Riferimento.
+	 * @throws IllegalTimeException Se gli Oggetti confrontati NON hanno un senso dal punto di vista temporale.
+	 */
 	
 	public boolean timeCompare(Time cmpTime)
 			throws IllegalTimeException {
@@ -32,6 +44,12 @@ public class Time {
 							return true;
 		return false;
 	}
+	
+	/**
+	 * Questo Metodo serve a Verificare che un Oggetto di tipo Time ha senso.
+	 * @param cmpTime È un Oggetto di tipo Time.
+	 * @throws IllegalTimeException Viene lanciata se cmpTime NON ha senso.
+	 */
 	
 	public void timeIsComparable(Time cmpTime)
 			throws IllegalTimeException {

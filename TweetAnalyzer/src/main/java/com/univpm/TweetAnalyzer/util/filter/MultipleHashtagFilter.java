@@ -16,11 +16,11 @@ public class MultipleHashtagFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
+	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
 			throws IllegalFilterValueException {
 		try {
 			for(Map.Entry<String, Map<Integer, Data>> entry : tempData.entrySet()) {
-				Iterator iterator = this.filterValue.iterator();
+				Iterator<String> iterator = this.filterValue.iterator();
 				while(iterator.hasNext()) {
 					if(( iterator.next() ).equals( entry.getKey()) )
 						filteredData.put(entry.getKey(), entry.getValue());

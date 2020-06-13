@@ -1,5 +1,9 @@
 package com.univpm.TweetAnalyzer.model.time;
 
+/**
+ * Classe le cui Istanze contengono un dato Giorno, Mese ed Anno.
+ */
+
 public class Date {
 	private int day;
 	private int month;

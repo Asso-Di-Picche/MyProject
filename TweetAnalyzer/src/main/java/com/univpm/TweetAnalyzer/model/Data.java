@@ -1,5 +1,9 @@
 package com.univpm.TweetAnalyzer.model;
 
+/**
+ * Classe le cui Istanze sono usate per contenere Dati relativi a un Tweet.
+ */
+
 public class Data{
 	
 	private String Language, Username, Date;
