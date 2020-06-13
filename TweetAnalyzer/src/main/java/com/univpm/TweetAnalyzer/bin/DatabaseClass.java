@@ -120,7 +120,7 @@ public class DatabaseClass {
 		}
 	}
 	
-	public String hashtagObtain(String url) throws InterruptedException{
+	public static String hashtagObtain(String url) throws InterruptedException{
 		String hashtag = "";
 		Scanner in = null;
 		
