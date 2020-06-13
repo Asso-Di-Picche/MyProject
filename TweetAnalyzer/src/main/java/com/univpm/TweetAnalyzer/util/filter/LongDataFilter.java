@@ -32,8 +32,8 @@ public abstract class LongDataFilter extends BasicFilter{
 		    if(longFilterValue < 0)
 		    	throw new IllegalFilterValueException();
 		    
-			Map<Integer, Data> filteredDataValue = new HashMap<>();
-			Map<Integer, Data> tempFilteredDataValue = new HashMap<>();
+			Map<Integer, Data> filteredDataValue = new HashMap<Integer, Data>();
+			Map<Integer, Data> tempFilteredDataValue = new HashMap<Integer, Data>();
 			Iterator<Map.Entry<String, Map<Integer, Data>>> iterator = tempData.entrySet().iterator();
 			
 			while(iterator.hasNext()) {
@@ -64,9 +64,9 @@ public abstract class LongDataFilter extends BasicFilter{
 				
 				filteredData.put(filteredDataKey, filteredDataValue);
 				
-				filteredDataKey = "";
-				tempFilteredDataValue = new HashMap<>();
-				filteredDataValue = new HashMap<>();
+				filteredDataKey = null;
+				tempFilteredDataValue = new HashMap<Integer, Data>();
+				filteredDataValue = new HashMap<Integer, Data>();
 			
 			}
 		

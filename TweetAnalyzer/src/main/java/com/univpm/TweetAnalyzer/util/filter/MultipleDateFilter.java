@@ -59,7 +59,7 @@ public class MultipleDateFilter extends BasicFilter{
 			}
 
 			filteredData.put(filteredDataKey, filteredBefore);
-			filteredDataKey = "";
+			filteredDataKey = null;
 			filteredAfter = new HashMap<>();
 			filteredBefore = new HashMap<>();
 			

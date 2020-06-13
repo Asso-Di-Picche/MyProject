@@ -17,6 +17,7 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
+import com.univpm.TweetAnalyzer.exception.StatisticsNotAppliedException;
 import com.univpm.TweetAnalyzer.model.Data;
 import com.univpm.TweetAnalyzer.service.FilterService;
 import com.univpm.TweetAnalyzer.service.StatisticsService;
@@ -41,12 +42,13 @@ public class ControllerClass {
 	}
 	
 	@RequestMapping(value = "stats", method = RequestMethod.GET)
-	public ResponseEntity<Object> getStats(){
+	public ResponseEntity<Object> getStats() throws StatisticsNotAppliedException{
 		return new ResponseEntity<>(StatisticsService.doStats(DatabaseClass.getDataMap()), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "stats", method = RequestMethod.POST)
-	public ResponseEntity<Object> getFilteredDataStats(@RequestBody Object filter) throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
+	public ResponseEntity<Object> getFilteredDataStats(@RequestBody Object filter)
+			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException, StatisticsNotAppliedException{
 		Map<String, Map<Integer, Data>> dataMap = FilterService.filterParsing(filter);
 		return new ResponseEntity<>(StatisticsService.doStats(dataMap), HttpStatus.OK);
 	}

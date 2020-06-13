@@ -31,7 +31,7 @@ public class SingleDateFilter extends BasicFilter{
 	public Map<String, Map<Integer, Data>> filtrate(Map filteredData)
 			throws IllegalTimeException {
 		Time cmpTime = null;
-		Map<Integer, Data> filteredDataValue = new HashMap<>();
+		Map<Integer, Data> filteredDataValue = new HashMap<Integer, Data>();
 		
 		Iterator<Map.Entry<String, Map<Integer, Data>>> iterator = tempData.entrySet().iterator();
 		while(iterator.hasNext()) {
@@ -48,6 +48,8 @@ public class SingleDateFilter extends BasicFilter{
 			}
 
 			filteredData.put(filteredDataKey, filteredDataValue);
+			filteredDataValue = new HashMap<Integer, Data>();
+			filteredDataKey = null;
 		}
 		
 		return filteredData;

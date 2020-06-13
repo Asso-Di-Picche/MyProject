@@ -77,4 +77,13 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(StatisticsNotAppliedException.class)
+	public final ResponseEntity<ErrorResponse> handleStatisticsNotAppliedException(StatisticsNotAppliedException ex, WebRequest request){
+		Map<String, Object> SolutionDetails = new HashMap<>();
+		SolutionDetails.put("1", "Use More Common Hashtag");
+		SolutionDetails.put("2", "If You Are Using a Filter, Change It");
+		
+		ErrorResponse Error = ErrorResponseInitialization(ex, SolutionDetails);
+		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
+	}
 }
