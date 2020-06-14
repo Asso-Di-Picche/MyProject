@@ -41,6 +41,7 @@ public class SingleDateFilter extends BasicFilter{
 			
 			for(Map.Entry<Integer, Data> entry : tempMap.entrySet()) {
 				cmpTime = DateParsingService.cmpTimeIstance(entry);
+				
 				if(BasicFilter.filterType == "After")
 					afterDate(filteredDataValue, entry, filterValue, cmpTime);
 				else 

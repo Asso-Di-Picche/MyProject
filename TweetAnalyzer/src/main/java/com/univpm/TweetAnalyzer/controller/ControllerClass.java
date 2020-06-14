@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.univpm.TweetAnalyzer.bin.DatabaseClass;
-import com.univpm.TweetAnalyzer.exception.FilterNotFoundException;
+import com.univpm.TweetAnalyzer.exception.DuplicateFilterException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
@@ -54,7 +54,7 @@ public class ControllerClass {
 	 * Risponde sulla Rotta /data con Chiamata POST.
 	 * @param jsonFilter è il JSON del corrispondente Filtro applicato dall'Utente.
 	 * @return una HashMap contenente i Dati Filtrati.
-	 * @throws FilterNotFoundException Se viene inserito un Filtro in una forma NON permessa.
+	 * @throws FilterNotFoundException Se vengono inseriti più Filtri dello stesso Tipo.
 	 * @throws IllegalFilterValueException Se viene inserito un Filtro con Campo Value NON riconosciuto.
 	 * @throws IllegalTimeException Se viene inserita un Filtro con una Data NON ammessa.
 	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
@@ -63,7 +63,7 @@ public class ControllerClass {
 	
 	@RequestMapping(value = "data", method = RequestMethod.POST)
 	public ResponseEntity<Object> getFilteredDataMap(@RequestBody Object jsonFilter)
-			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException {
+			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException {
 		
 		return new ResponseEntity<>(FilterService.filterParsing(jsonFilter), HttpStatus.OK);
 	}
@@ -84,7 +84,7 @@ public class ControllerClass {
 	 * Risponde sulla Rotta /stats con Chiamata POST.
 	 * @param jsonFilter
 	 * @return un Oggetto di tipo totalStats contenente Statistiche sui Dati
-	 * @throws FilterNotFoundException Se viene inserito un Filtro in una forma NON permessa.
+	 * @throws DuplicateFilterException Se vengono inseriti più Filtri dello stesso Tipo.
 	 * @throws IllegalFilterValueException Se viene inserito un Filtro con Campo Value NON riconosciuto.
 	 * @throws IllegalTimeException Se viene inserita un Filtro con una Data NON ammessa.
 	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
@@ -94,7 +94,7 @@ public class ControllerClass {
 	
 	@RequestMapping(value = "stats", method = RequestMethod.POST)
 	public ResponseEntity<Object> getFilteredDataStats(@RequestBody Object jsonFilter)
-			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException, StatisticsNotAppliedException{
+			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException, StatisticsNotAppliedException{
 		
 		Map<String, Map<Integer, Data>> dataMap = FilterService.filterParsing(jsonFilter);
 		

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.univpm.TweetAnalyzer.bin.DatabaseClass;
-import com.univpm.TweetAnalyzer.exception.FilterNotFoundException;
+import com.univpm.TweetAnalyzer.exception.DuplicateFilterException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
@@ -25,32 +26,58 @@ import com.univpm.TweetAnalyzer.util.filter.SingleDateFilter;
 import com.univpm.TweetAnalyzer.util.filter.SingleHashtagFilter;
 import com.univpm.TweetAnalyzer.util.filter.SingleLanguageFilter;
 
+/**
+ * Questa è la Classe che si occupa della Gestione dei Filtri JSON.
+ */
+
 public class FilterService {
+	
+	//Questa è la Variabile che conterrà il Filtro una volta Parsato.
 	private static Filter filter;
+	
+	//Questa è la Map contenente Dati Filtrati man mano che viene applicato uno o più Filtri.
 	private static Map<String, Map<Integer, Data>> filteredData;
 	
+	/**
+	 * Questa è il Metodo che si occupa di effettuare il Parsing di un filtro JSON.
+	 * @param jsonFilter È l'Istanza del Filtro JSON inserito dall'Utente.
+	 * @return Una Map contenente i Dati Filtrati.
+	 * @throws DuplicateFilterException Se il Filtro è composto da più Filtri contenenti la stessa Chiave.
+	 * @throws IllegalFilterValueException Se uno dei Valori inserito dall'Utente nel Filtro è Errato.
+	 * @throws IllegalTimeException Se un'eventuale Data del Filtro è stata inserita in un modo NON consentito.
+	 * @throws IllegalFilterValueSizeException Se uno dei Valori inserito dall'Utente nel Filtro è di dimensione NON consentita.
+	 * @throws IllegalFilterKeyException Se una delle Chiavi inserite dall'Utente nel Filtro è Errata.
+	 */
+	
 	public static Map<String, Map<Integer, Data>> filterParsing(Object jsonFilter)
-			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
+			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
+		
+		//Questa Variabile rappresenta la Map da Filtrare.
 		Map<String, Map<Integer, Data>> tempData = DatabaseClass.getDataMap();
-		filteredData = new HashMap<String, Map<Integer, Data>>();
+		
+		//Questa Variabile serve per Parsare il Filtro.
 		HashMap<String, Object> filterMap = new HashMap<String, Object>();
 		String filterKey = null;
 		Object filterValue = null;
 				
 		try {
+			
+			//Questo Controllo serve per Verificare se l'Utente ha inserito o meno un'Array di Filtri nel JSON.
 			if(jsonFilter instanceof ArrayList) {
 				ArrayList<Object> filterList = new ObjectMapper().convertValue(jsonFilter, ArrayList.class);
 				
 				for(Object o : filterList) {
 					
+					//Questa HashMap viene utilizzata per Parsare ciascun Filtro costituente il JSON.
 					HashMap<String, Object> tempMap = new ObjectMapper().convertValue(o, HashMap.class);
+						
 					Iterator<Map.Entry<String, Object>> entries = tempMap.entrySet().iterator();
 					Map.Entry<String, Object> entry = entries.next();
 					filterMap.put(entry.getKey(), entry.getValue());
 					
 				}
 				if(filterMap.size() < filterList.size())
-					throw new FilterNotFoundException();
+					throw new DuplicateFilterException();
 
 				Iterator<Map.Entry<String, Object>> entries = filterMap.entrySet().iterator();
 				
@@ -81,8 +108,8 @@ public class FilterService {
 				filteredData = filterRun(tempData, filterKey, filterValue);
 			}
 		}
-		catch(FilterNotFoundException ex) {
-			throw new FilterNotFoundException("Filters Can Not Have Duplicates!");
+		catch(DuplicateFilterException ex) {
+			throw new DuplicateFilterException("Filters Can Not Have Duplicates!");
 		}
 		
 		return filteredData;
@@ -90,7 +117,7 @@ public class FilterService {
 	}
 	
 	public static Map<String, Map<Integer, Data>> filterRun(Map<String, Map<Integer, Data>> tempData, String filterKey, Object filterValue)
-			throws FilterNotFoundException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
+			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
 		try {
 			
 			if(filterKey == "#") {

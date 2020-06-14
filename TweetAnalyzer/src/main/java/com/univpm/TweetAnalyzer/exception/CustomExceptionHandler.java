@@ -55,12 +55,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	/**
 	 * Questo Metodo viene chiamato al lancio di FilterNotFoundException.
-	 * @param ex contiene una FilterNotFoundException.
+	 * @param ex contiene una DuplicateFilterException.
 	 * @return un Oggetto Error con informazioni riguardanti l'Eccezione e un Codice di Stato HTTP.
 	 */
 	
-	@ExceptionHandler(FilterNotFoundException.class)
-	public final ResponseEntity<ErrorResponse> handleFilterNotFoundException(FilterNotFoundException ex){
+	@ExceptionHandler(DuplicateFilterException.class)
+	public final ResponseEntity<ErrorResponse> handleFilterNotFoundException(DuplicateFilterException ex){
 		ErrorResponse Error = ErrorResponseInitialization(ex, "Use An Allowed Filter");
 		return new ResponseEntity<>(Error, HttpStatus.BAD_REQUEST);
 	}

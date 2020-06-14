@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class FilterNotFoundException extends Exception{
+public class DuplicateFilterException extends Exception{
 	private static final long serialVersionUID = 1L;
 
-	public FilterNotFoundException() {
+	public DuplicateFilterException() {
 	}
 	
-	public FilterNotFoundException(String Message) {
+	public DuplicateFilterException(String Message) {
 		super(Message);
 	}
 
