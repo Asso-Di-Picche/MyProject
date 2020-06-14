@@ -54,12 +54,23 @@ public class DatabaseClass {
 	public static Map<String, Map<Integer, Data>> getDataMap(){
 		return dataMap;
 	}
-	
+
+
+	/**
+	 * Gets hashtag directory.
+	 *
+	 * @return the hashtag directory
+	 */
+	public static String getHashtagDirectory() {
+		return hashtagDirectory;
+	}
+
+
 	/**
 	 * Qui vengono inizializzati Tutti i Metadati di Twitter che verranno
 	 * presi in esame dall'Applicazione.
 	 */
-	
+
 	public void metadataFill() {
 		metadataList.add(new Metadata("Hashtag", "String"));
 		metadataList.add(new Metadata("Date", "String"));

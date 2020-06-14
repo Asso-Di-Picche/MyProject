@@ -21,10 +21,18 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test di un metodo della classe Database, ovvero hashtagObtain.
+ * Testa, simulando il metodo, la corretta lettura degli hashtag dal file di testo nel path specificato,
+ * confrontandoli con il risultato aspettato.
+ */
+
 class DatabaseClassTest {
 
     DatabaseClass data;
     private static final String path = "/Files/hashtags.txt";
+    DatabaseClass databaseClass;
+
     private static String in = null;
     private static ArrayList<String> hashtag = new ArrayList<String>();
     private static String[] hashArray = {"Prada", "Armani", "Ferragamo", "Gucci", "Versace", "Trussardi", "Valentino", "Zegna", "Dior", "Benetton"};
@@ -37,12 +45,10 @@ class DatabaseClassTest {
         Scanner in = new Scanner(new BufferedReader(new FileReader(path)));
 
         while (in.hasNext()) {
-
             hashtag.add(in.next());
         }
 
         if (in != null) {
-
             in.close();
         }
 
