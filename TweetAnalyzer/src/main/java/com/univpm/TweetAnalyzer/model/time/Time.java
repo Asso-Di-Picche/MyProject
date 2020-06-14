@@ -100,6 +100,11 @@ public class Time {
 	public Date getDate() {
 		return date;
 	}
+	
+	/**
+	 * 
+	 * @param date
+	 */
 
 	public void setDate(Date date) {
 		this.date = date;
