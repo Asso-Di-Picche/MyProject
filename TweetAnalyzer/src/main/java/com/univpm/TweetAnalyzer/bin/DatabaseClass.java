@@ -27,7 +27,7 @@ import com.univpm.TweetAnalyzer.model.Metadata;
  */
 public class DatabaseClass {
 	
-	private static final String hashtagDirectory = "/Users/antoniobaio/Desktop/MyProject/TweetAnalyzer/Files/hashtags.txt";
+	private static final String hashtagDirectory = "/Users/antoniobaio/Desktop/Progetto/Project/TweetAnalyzer/Files/original_hashtags.txt";
 	private static ArrayList<Metadata> metadataList = new ArrayList<Metadata>();
 	private static Map<String, Map<Integer, Data>> dataMap = new HashMap<String, Map<Integer, Data>>();
 	private static final ArrayList<String> urls = new ArrayList<>();
@@ -53,12 +53,23 @@ public class DatabaseClass {
 	public static Map<String, Map<Integer, Data>> getDataMap(){
 		return dataMap;
 	}
-	
+
+
+	/**
+	 * Gets hashtag directory.
+	 *
+	 * @return the hashtag directory
+	 */
+	public static String getHashtagDirectory() {
+		return hashtagDirectory;
+	}
+
+
 	/**
 	 * Qui vengono inizializzati Tutti i Metadati di Twitter che verranno
 	 * presi in esame dall'Applicazione.
 	 */
-	
+
 	public void metadataFill() {
 		metadataList.add(new Metadata("Hashtag", "String"));
 		metadataList.add(new Metadata("Date", "String"));
