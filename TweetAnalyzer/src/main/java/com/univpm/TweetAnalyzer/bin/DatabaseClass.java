@@ -27,7 +27,7 @@ import com.univpm.TweetAnalyzer.model.Metadata;
  */
 public class DatabaseClass {
 	
-	private static final String hashtagDirectory = "Files/hashtags.txt";
+	private static final String hashtagDirectory = "/Users/antoniobaio/Desktop/MyProject/TweetAnalyzer/Files/hashtags.txt";
 	private static ArrayList<Metadata> metadataList = new ArrayList<Metadata>();
 	private static Map<String, Map<Integer, Data>> dataMap = new HashMap<String, Map<Integer, Data>>();
 	private static final ArrayList<String> urls = new ArrayList<>();
@@ -146,7 +146,7 @@ public class DatabaseClass {
 	 * Questo metodo serve ad Associare ciascun Hashtag ai corrispondenti Tweet Scaricati. 
 	 */
 	
-	public String hashtagObtain(String url) throws InterruptedException{
+	public static String hashtagObtain(String url) throws InterruptedException{
 		String hashtag = "";
 		Scanner in = null;
 		
