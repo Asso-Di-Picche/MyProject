@@ -12,20 +12,43 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Questa Classe si occupa di Calcolare Statistiche su una Map di Dati.
+ */
+
 public class StatisticsService {
+	
+	//Questa Variabile viene utilizzata per contenere tutte le Statistiche relative ai Singoli Hashtag.
 	private static ArrayList<SingleStats> statsList;
+	
+	//Questa Variabile viene utilizzata per contenere tutte le Statistiche sui Dati di una Map.
 	private static TotalStats totalStats;
 
+	/**
+	 * Questo Metodo serve ad Arrotondare Numeri Decimali ad una determinata Cifra dopo la Virgola.
+	 * @param number È il Numero da Arrotondare.
+	 * @param decimals È la Cifra Decimale alla quale Arrotondare il Numero.
+	 * @return Il Numero Arrotondato.
+	 */
+	
 	public static double roundDecimals(double number, int decimals) {
 		double factor = Math.pow(10, decimals);
 		return Math.floor(number * factor + 0.5) / factor;
 	}
 
+	/**
+	 * Questo Metodo serve per Applicare su una Map una serie di Calcoli dai quali Ottenere le Statistiche.
+	 * @param dataMap È la Map sulla quale Calcolare le Statistiche.
+	 * @return Un Oggetto del Tipo TotalStats.
+	 * @throws StatisticsNotAppliedException Viene lanciata se NON è stato possibile Applicare i Calcoli.
+	 */
+	
 	public static TotalStats doStats(Map<String, Map<Integer, Data>> dataMap) throws StatisticsNotAppliedException {
 		statsList = new ArrayList<SingleStats>();
 		totalStats = new TotalStats();
 
 		try {
+			
 			numberStats(statsList, dataMap);
 			percStats(statsList);
 			dateStats(statsList, dataMap);
@@ -39,7 +62,14 @@ public class StatisticsService {
 		return totalStats;
 
 	}
-
+	
+	/**
+	 * Questo Metodo Calcola Statistiche sui Likes e sui Retweets, in Valore Numerico,
+	 * relativi ad un determinato Hashtag.
+	 * @param statsList Viene utilizzata per contenere tutte le Statistiche relative ai Singoli Hashtag.
+	 * @param dataMap È la Map sulla quale Calcolare le Statistiche.
+	 */
+	
 	public static void numberStats(ArrayList<SingleStats> statsList, Map<String, Map<Integer, Data>> dataMap) {
 		long Likes = 0;
 		long Retweets = 0;
@@ -78,6 +108,12 @@ public class StatisticsService {
 		}
 	}
 
+	/**
+	 * Questo Metodo serve per Calcolare le Percentuali di Likes e Retweets dei rispettivi Hashtag
+	 * in relazione ai Likes ed ai Retweets Totali.
+	 * @param statsList Viene utilizzata per contenere tutte le Statistiche relative ai Singoli Hashtag.
+	 */
+	
 	public static void percStats(ArrayList<SingleStats> statsList) {
 		long Likes = 0;
 		long Retweets = 0;
@@ -100,9 +136,22 @@ public class StatisticsService {
 
 	}
 
+	/**
+	 * Questo Metodo Calcola la Media dei Posts al Giorno su ciascun Hashtag.
+	 * @param statsList Viene utilizzata per contenere tutte le Statistiche relative ai Singoli Hashtag.
+	 * @param dataMap È la Map sulla quale Calcolare le Statistiche.
+	 */
+	
 	public static void dateStats(ArrayList<SingleStats> statsList, Map<String, Map<Integer, Data>> dataMap) {
+		
+		//Questa Variabile serve per Contenere tutti i Giorni in cui sono stati effettuati Posts
+		//contenenti uno degli Hashtag Analizzati.
 		HashSet<Date> cmpDates = new HashSet<Date>();
+		
+		//Questa Variabile serve per Contenere il Numero di Posts relativi a ciascun Hashtag.
 		ArrayList<Integer> counter = new ArrayList<Integer>();
+		
+		//Questa Variabile serve per Calcolare la Media di Posts al Giorno per ciascun Hashtag.
 		double postAverage = 0;
 
 		cmpDates = getDates(cmpDates, dataMap);
@@ -110,6 +159,7 @@ public class StatisticsService {
 		for (Map.Entry<String, Map<Integer, Data>> entries : dataMap.entrySet()) {
 			String hashtag = entries.getKey();
 			Map<Integer, Data> tempMap = entries.getValue();
+			
 			Iterator<Date> it = cmpDates.iterator();
 
 			while (it.hasNext()) {

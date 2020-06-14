@@ -55,7 +55,7 @@ public class FilterService {
 		//Questa Variabile rappresenta la Map da Filtrare.
 		Map<String, Map<Integer, Data>> tempData = DatabaseClass.getDataMap();
 		
-		//Questa Variabile serve per Parsare il Filtro.
+		//Questa Variabile dovrà contenere il Filtro Parsato.
 		HashMap<String, Object> filterMap = new HashMap<String, Object>();
 		String filterKey = null;
 		Object filterValue = null;
@@ -73,14 +73,20 @@ public class FilterService {
 						
 					Iterator<Map.Entry<String, Object>> entries = tempMap.entrySet().iterator();
 					Map.Entry<String, Object> entry = entries.next();
+					
 					filterMap.put(entry.getKey(), entry.getValue());
 					
 				}
+				
+				//Questo Controllo sfrutta il fatto che le Map NON possono contenere Duplicati
+				//per verificare se effetivamente è necessario lanciare la corrispondente Eccezione.
 				if(filterMap.size() < filterList.size())
 					throw new DuplicateFilterException();
 
 				Iterator<Map.Entry<String, Object>> entries = filterMap.entrySet().iterator();
 				
+				//Ad ogni Ciclo viene popolata la Map filteredData mediante l'applicazione
+				//di Filtri, fino al punto in cui NON ci sono più Filtri da Applicare.
 				while(entries.hasNext()) {
 					
 					Map.Entry<String, Object> entry = entries.next();
@@ -96,6 +102,9 @@ public class FilterService {
 				}
 				
 			}
+			
+			//Questo Else viene eseguito dall'Applicazione se l'Utente ha deciso di
+			//Applicare un Unico Filtro
 			else {
 				filterMap = new ObjectMapper().convertValue(jsonFilter, HashMap.class);
 				
@@ -115,6 +124,21 @@ public class FilterService {
 		return filteredData;
 		
 	}
+	
+	/**
+	 * Questo Metodo viene utilizzato per Inizializzare un Filtro mediante un Controllo sul Nome,
+	 * per poi in seguito Applicarlo mediante il concetto di Ereditarietà.
+	 * @param tempData Contiene i Dati dei Tweet eventualmente "Sopravvissuti" ad una Precedente rassegna,
+	 *                 e che sono quindi pronti ad essere sottoposti all'Applicazione di un nuovo Filtro.
+	 * @param filterKey Contiene il Nome/Chiave del Filtro da Applicare.
+	 * @param filterValue Contiene una Stringa o un ArrayList che costituiscono l'Argomento del Filtro.
+	 * @return Una Map di Dati filtrata.
+	 * @throws DuplicateFilterException Se il Filtro è composto da più Filtri contenenti la stessa Chiave.
+	 * @throws IllegalFilterValueException Se uno dei Valori inserito dall'Utente nel Filtro è Errato.
+	 * @throws IllegalTimeException Se un'eventuale Data del Filtro è stata inserita in un modo NON consentito.
+	 * @throws IllegalFilterValueSizeException Se uno dei Valori inserito dall'Utente nel Filtro è di dimensione NON consentita.
+	 * @throws IllegalFilterKeyException Se una delle Chiavi inserite dall'Utente nel Filtro è Errata.
+	 */
 	
 	public static Map<String, Map<Integer, Data>> filterRun(Map<String, Map<Integer, Data>> tempData, String filterKey, Object filterValue)
 			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
