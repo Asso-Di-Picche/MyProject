@@ -29,11 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseClassTest {
 
-    DatabaseClass data;
     private static final String path = "/Files/hashtags.txt";
-    DatabaseClass databaseClass;
-
-    private static String in = null;
     private static ArrayList<String> hashtag = new ArrayList<String>();
     private static String[] hashArray = {"Prada", "Armani", "Ferragamo", "Gucci", "Versace", "Trussardi", "Valentino", "Zegna", "Dior", "Benetton"};
 

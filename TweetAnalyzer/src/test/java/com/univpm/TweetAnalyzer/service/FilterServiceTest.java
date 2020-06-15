@@ -17,10 +17,11 @@ import java.util.Map;
 class FilterServiceTest {
 
     private static Map<String, String> filter = new LinkedHashMap<String, String>();
+    private static Map<String, String> filter2 = new LinkedHashMap<String, String>();
     private Exception IllegalFilterKeyException;
 
     @Test
-    @DisplayName("Verifica se il filtro è giusto")
+    @DisplayName("Verifica il filtro passato")
     @Tag("Filter")
     void passedTest() {
     	filter.put("Gesù","it");
