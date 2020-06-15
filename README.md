@@ -132,6 +132,11 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 
 ## UML
 
+**PACKAGE**
+
+![Package](UML/Package.jpg)
+
+
 **USE CASE DIAGRAM**
 
 ![UseCase](UML/UseCaseDiagram.jpg)
