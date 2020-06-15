@@ -1,10 +1,8 @@
 package com.univpm.TweetAnalyzer.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
-import org.json.JSONException;
-import org.json.JSONObject;
+
+import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,17 +12,24 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+
+/**
+ * Test sull'applicazione di un filtro sbagliato. Passando al metodo filterParsing(filter)
+ * un filtro costruito male, viene lanciata l'eccezione personalizzata IllegalKeyException
+ */
 class FilterServiceTest {
 
     private static Map<String, String> filter = new LinkedHashMap<String, String>();
-    private static Map<String, String> filter2 = new LinkedHashMap<String, String>();
     private Exception IllegalFilterKeyException;
 
+    /**
+     * Filter test.
+     */
     @Test
     @DisplayName("Verifica il filtro passato")
     @Tag("Filter")
-    void passedTest() {
-    	filter.put("Gesù","it");
-        assertThrows(IllegalFilterKeyException.class, () -> FilterService.filterParsing(filter), "Il filtro immesso non è corretto");
+    void filterTest() {
+    	filter.put("Pigna","it");
+        assertThrows(IllegalFilterKeyException.class, () -> FilterService.filterParsing(filter), "La chiave del filtro immesso non è corretta");
     }
 }
