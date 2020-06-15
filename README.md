@@ -90,10 +90,10 @@ I filtri realizzati sono i seguenti:
 
 |Tipo di filtro| Esempio di body da inserire |
 |--|--|
-| Hashtag | **{ "#" : "Prada" }** oppure **{ "#" : [ "Gucci", "Dior" , "Prada" ] }**|
-| Lingua    | **{ "Language" : "it" }** oppure **{ "Language" : [ "it", "ja", "fr" ] }**
+| Hashtag | **{ "#" : "Prada" }** - oppure - **{ "#" : [ "Gucci", "Dior" , "Prada" ] }**|
+| Lingua    | **{ "Language" : "it" }** - oppure - **{ "Language" : [ "it", "ja", "fr" ] }**
 |Followers, retweets e likes| **{ "Followers" : [ "<" , "345"] }**
-|Data| **{ "Before" : "07/06/2020" }** oppure **{ "After" : "07/06/2020" }** oppure **{ "Between" : [ "07/06/2020" , "09/06/2020" ] }**
+|Data| **{ "Before" : "07/06/2020" }** - oppure - **{ "After" : "07/06/2020" }** - oppure - **{ "Between" : [ "07/06/2020" , "09/06/2020" ] }**
  
 Per esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
 
