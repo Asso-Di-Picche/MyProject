@@ -131,3 +131,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
 
 ## UML
+
+**USE CASE DIAGRAM**
+
+![UseCase](UML/UseCaseDiagram.jpg)
