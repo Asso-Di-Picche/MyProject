@@ -56,7 +56,7 @@ public class ControllerClass {
 	 * @return una HashMap contenente i Dati Filtrati.
 	 * @throws FilterNotFoundException Se vengono inseriti più Filtri dello stesso Tipo.
 	 * @throws IllegalFilterValueException Se viene inserito un Filtro con Campo Value NON riconosciuto.
-	 * @throws IllegalTimeException Se viene inserita un Filtro con una Data NON ammessa.
+	 * @throws IllegalTimeException Se viene inserito un Filtro con una Data NON ammessa.
 	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
 	 * @throws IllegalFilterKeyException Se viene inserito un Filtro con una Chiave NON esistente.
 	 */
@@ -86,7 +86,7 @@ public class ControllerClass {
 	 * @return un Oggetto di tipo totalStats contenente Statistiche sui Dati
 	 * @throws DuplicateFilterException Se vengono inseriti più Filtri dello stesso Tipo.
 	 * @throws IllegalFilterValueException Se viene inserito un Filtro con Campo Value NON riconosciuto.
-	 * @throws IllegalTimeException Se viene inserita un Filtro con una Data NON ammessa.
+	 * @throws IllegalTimeException Se viene inserito un Filtro con una Data NON ammessa.
 	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
 	 * @throws IllegalFilterKeyException Se viene inserito un Filtro con una Chiave NON esistente.
      * @throws StatisticsNotAppliedException Se ci sono stati Errori nei Calcoli delle Statistiche.

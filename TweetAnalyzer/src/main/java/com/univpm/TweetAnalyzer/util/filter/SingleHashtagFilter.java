@@ -1,9 +1,15 @@
 package com.univpm.TweetAnalyzer.util.filter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.model.Data;
+
+/**
+ * Questa è la Classe le cui Istanze sono Filtri che vengono Applicati in base ad un Hashtag
+ * inserito dall'Utente.
+ */
 
 public class SingleHashtagFilter extends BasicFilter{
 	private String filterValue;
@@ -14,8 +20,12 @@ public class SingleHashtagFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
+	public Map<String, Map<Integer, Data>> filtrate()
 			throws IllegalFilterValueException {
+		
+		//Questa Map serve per contenere i Dati da Restituire una volta che sono stati Filtrati.
+		Map<String, Map<Integer, Data>> filteredData = new HashMap<String, Map<Integer,Data>>();
+		
 		try {
 			for(Map.Entry<String, Map<Integer, Data>> entry: tempData.entrySet())
 				if(this.filterValue.equals(entry.getKey()))

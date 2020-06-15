@@ -154,7 +154,7 @@ public class StatisticsService {
 		//Questa Variabile serve per Calcolare la Media di Posts al Giorno per ciascun Hashtag.
 		double postAverage = 0;
 
-		cmpDates = getDates(cmpDates, dataMap);
+		cmpDates = getDates(dataMap);
 
 		for (Map.Entry<String, Map<Integer, Data>> entries : dataMap.entrySet()) {
 			String hashtag = entries.getKey();
@@ -167,6 +167,9 @@ public class StatisticsService {
 				Date cmpDate = it.next();
 
 				for (Map.Entry<Integer, Data> entry : tempMap.entrySet()) {
+					
+					//Attraverso actTime e actDate si Ottiene una Data, a partire dal
+					//corrispondente Campo Date dei Posts in dataMap.
 					Time actTime = DateParsingService.cmpTimeIstance(entry);
 					Date actDate = actTime.getDate();
 
@@ -196,9 +199,20 @@ public class StatisticsService {
 		}
 	}
 
-	public static HashSet<Date> getDates(HashSet<Date> cmpDates, Map<String, Map<Integer, Data>> dataMap) {
+	/**
+	 * Questo Metodo serve per Ottenere Tutte le differenti Date (Giorno/Mese/Anno)
+	 * presenti in dataMap.
+	 * @param dataMap È la Map sulla quale Calcolare le Statistiche.
+	 * @return Un HashSet delle Date presenti in dataMap. 
+	 */
+	
+	public static HashSet<Date> getDates(Map<String, Map<Integer, Data>> dataMap) {
+		
+		//Questa Variabile è un HashSet di Appoggio per Evitare Date Duplicate.
 		HashSet<Date> tempDates = new HashSet<Date>();
-
+		
+		HashSet<Date> cmpDates = new HashSet<Date>();
+		
 		for (Map.Entry<String, Map<Integer, Data>> entries : dataMap.entrySet()) {
 			Map<Integer, Data> tempMap = entries.getValue();
 
@@ -208,6 +222,9 @@ public class StatisticsService {
 				Iterator<Date> it = tempDates.iterator();
 
 				while (it.hasNext()) {
+					
+					//Viene fatto questo Controllo per Evitare di avere Date Duplicate
+					//in cmpDates.
 					if (!cmpDates.contains(it.next()))
 						cmpDates.add(cmpTime.getDate());
 				}

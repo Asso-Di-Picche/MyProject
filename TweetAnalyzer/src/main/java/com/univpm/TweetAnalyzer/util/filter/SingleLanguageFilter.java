@@ -9,6 +9,11 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 import com.univpm.TweetAnalyzer.model.Data;
 
+/**
+ * Questa è la Classe le cui Istanze sono Filtri che vengono Applicati in base ad una Lingua
+ * inserita dall'Utente.
+ */
+
 public class SingleLanguageFilter extends BasicFilter{
 	private String filterValue;
 	
@@ -18,8 +23,9 @@ public class SingleLanguageFilter extends BasicFilter{
 	}
 
 	@Override
-	public Map<String, Map<Integer, Data>> filtrate(Map<String, Map<Integer, Data>> filteredData)
+	public Map<String, Map<Integer, Data>> filtrate()
 			throws IllegalTimeException, IllegalFilterValueException, IllegalFilterValueSizeException {
+		Map<String, Map<Integer, Data>> filteredData = new HashMap<String, Map<Integer,Data>>();
 		Map<Integer, Data> filteredDataValue = new HashMap<>();
 		Iterator<Map.Entry<String, Map<Integer, Data>>> iterator = tempData.entrySet().iterator();
 		
@@ -28,7 +34,7 @@ public class SingleLanguageFilter extends BasicFilter{
 			String filteredDataKey = pointedMap.getKey();
 			HashMap<Integer, Data> tempMap = (HashMap<Integer, Data>) pointedMap.getValue();
 			
-			filteredDataValue = filterDataValue(filteredDataValue, tempMap);
+			filteredDataValue = filterDataValue(tempMap);
 			filteredData.put(filteredDataKey, filteredDataValue);
 			filteredDataKey = null;
 			filteredDataValue = new HashMap<>();
@@ -37,8 +43,17 @@ public class SingleLanguageFilter extends BasicFilter{
 		return filteredData;
 	}
 	
-	public Map<Integer, Data> filterDataValue(Map<Integer, Data> filteredDataValue,
-			Map<Integer, Data> tempMap) throws IllegalFilterValueSizeException{
+	/**
+	 * Questo Metodo serve per Popolare una Map con i Tweet scritti in una determinata Lingua.
+	 * @param tempMap È la Map contenente i Tweet "Sopravvissuti" ad una eventuale
+	 *                Applicazione di un altro Filtro.
+	 * @return Una Map contenente i Tweet scritti nella Lingua specificata dall'Utente.
+	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
+	 */
+	
+	public Map<Integer, Data> filterDataValue(Map<Integer, Data> tempMap)
+			throws IllegalFilterValueSizeException{
+		Map<Integer, Data> filteredDataValue = new HashMap<Integer, Data>();
 		
 		try {
 			if(filterValue.length() > 2)

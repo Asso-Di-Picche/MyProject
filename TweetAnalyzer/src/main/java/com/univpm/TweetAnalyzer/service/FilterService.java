@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.univpm.TweetAnalyzer.bin.DatabaseClass;
@@ -186,7 +185,7 @@ public class FilterService {
 			
 		}
 		
-		filter.filtrate(filteredData);
+		filteredData = filter.filtrate();
 			
 		return filteredData;
 	}
