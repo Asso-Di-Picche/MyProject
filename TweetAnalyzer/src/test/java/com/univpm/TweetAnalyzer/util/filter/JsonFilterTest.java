@@ -25,6 +25,7 @@ class JsonFilterTest {
     void jsonTest(){
 
         String json1 = null;
+        String json2 = null;
 
         try {
 
