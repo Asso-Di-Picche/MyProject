@@ -115,6 +115,9 @@ E' anche possibile costruire un body per applicare più filtri di diversa natura
       ["Between" : ["07/06/2020", "09/06/2020"]]
     }
 
+> **POST /stats**
+
+Unito ad un body costruito come i precedenti, restituisce le statistiche rispetto ai post filtrati.
 
 
 ## Gestione delle eccezioni
@@ -187,12 +190,16 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Metadata](UML/getMetadataUML.jpg)
 
 
+**GET /stats**
+
+![Stats](UML/getStatsUML.jpg)
 
 
+**POST /stats**
+
+![Stats](UML/postStatsUML.jpg)
 
 
+**POST /data**
 
-
-
-
-
+![Data](UML/postDataUML.jpg)
