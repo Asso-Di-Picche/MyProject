@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * Test sull'applicazione di un filtro sbagliato. Passando al metodo filterParsing(filter)
- * un filtro costruito male, viene lanciata l'eccezione personalizzata IllegalKeyException
+ * un "filter" con una chiave errata (non esistente), viene lanciata l'eccezione personalizzata IllegalFilterKeyException.
  */
 class FilterServiceTest {
 

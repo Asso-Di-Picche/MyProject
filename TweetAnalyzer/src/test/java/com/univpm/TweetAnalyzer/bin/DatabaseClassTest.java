@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseClassTest {
 
-    private static final String path = "/Files/hashtags.txt";
+    private static final String path = "/Users/antoniobaio/Desktop/Progetto/Project/TweetAnalyzer/Files/hashtags.txt";
     private static ArrayList<String> hashtag = new ArrayList<String>();
     private static String[] hashArray = {"Prada", "Armani", "Ferragamo", "Gucci", "Versace", "Trussardi", "Valentino", "Zegna", "Dior", "Benetton"};
 
@@ -48,7 +48,7 @@ class DatabaseClassTest {
             in.close();
         }
 
-        assertIterableEquals(Arrays.asList(hashArray), hashtag);
+        assertIterableEquals(Arrays.asList(hashArray), hashtag, "Tutti uguali");
     }
 
 }
