@@ -48,11 +48,11 @@ public class FilterService {
 	 * @throws IllegalFilterKeyException Se una delle Chiavi inserite dall'Utente nel Filtro è Errata.
 	 */
 	
-	public static Map<String, Map<Integer, Data>> filterParsing(Object jsonFilter)
+	public static Map<String, Map<Integer, Data>> filterParsing(Object jsonFilter, Map<String, Map<Integer, Data>> dataToFilter)
 			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException{
 		
 		//Questa Variabile rappresenta la Map da Filtrare.
-		Map<String, Map<Integer, Data>> tempData = DatabaseClass.getDataMap();
+		Map<String, Map<Integer, Data>> tempData = dataToFilter;
 		
 		//Questa Variabile dovrà contenere il Filtro Parsato.
 		HashMap<String, Object> filterMap = new HashMap<String, Object>();

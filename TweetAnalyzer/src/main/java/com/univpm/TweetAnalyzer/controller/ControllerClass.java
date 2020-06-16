@@ -65,7 +65,7 @@ public class ControllerClass {
 	public ResponseEntity<Object> getFilteredDataMap(@RequestBody Object jsonFilter)
 			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException {
 		
-		return new ResponseEntity<>(FilterService.filterParsing(jsonFilter), HttpStatus.OK);
+		return new ResponseEntity<>(FilterService.filterParsing(jsonFilter, DatabaseClass.getDataMap()), HttpStatus.OK);
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class ControllerClass {
 	public ResponseEntity<Object> getFilteredDataStats(@RequestBody Object jsonFilter)
 			throws DuplicateFilterException, IllegalFilterValueException, IllegalTimeException, IllegalFilterValueSizeException, IllegalFilterKeyException, StatisticsNotAppliedException{
 		
-		Map<String, Map<Integer, Data>> dataMap = FilterService.filterParsing(jsonFilter);
+		Map<String, Map<Integer, Data>> dataMap = FilterService.filterParsing(jsonFilter, DatabaseClass.getDataMap());
 		
 		return new ResponseEntity<>(StatisticsService.doStats(dataMap), HttpStatus.OK);
 	}
