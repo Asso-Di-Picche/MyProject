@@ -28,7 +28,7 @@ import com.univpm.TweetAnalyzer.model.Metadata;
 
 public class DatabaseClass {
 	
-	private static final String hashtagDirectory = "/Users/antoniobaio/Desktop/Progetto/Project/TweetAnalyzer/Files/hashtags.txt";
+	private static final String hashtagDirectory = "Files/hashtags.txt";
 	private static ArrayList<Metadata> metadataList = new ArrayList<Metadata>();
 	private static Map<String, Map<Integer, Data>> dataMap = new HashMap<String, Map<Integer, Data>>();
 	private static final ArrayList<String> urls = new ArrayList<>();
