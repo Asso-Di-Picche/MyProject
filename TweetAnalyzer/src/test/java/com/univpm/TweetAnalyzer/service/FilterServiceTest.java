@@ -1,5 +1,6 @@
 package com.univpm.TweetAnalyzer.service;
 
+import com.univpm.TweetAnalyzer.bin.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
@@ -30,6 +31,6 @@ class FilterServiceTest {
     @Tag("Filter")
     void filterTest() {
     	filter.put("Pigna","it");
-        assertThrows(IllegalFilterKeyException.class, () -> FilterService.filterParsing(filter), "La chiave del filtro immesso non è corretta");
+        assertThrows(IllegalFilterKeyException.class, () -> FilterService.filterParsing(filter, DatabaseClass.getDataMap()), "La chiave del filtro immesso non è corretta");
     }
 }
