@@ -2,7 +2,7 @@
 
 Tweets Analyzer è una Spring Boot Web App sviluppata in Java, in grado di interfacciarsi con le API Search di Twitter per raccogliere dati inerenti ad alcuni hashtag a scelta dell'utente, al fine di sviluppare uno studio di analisi statistica e di impatto sui dati raccolti.
 
-All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su 10 hashtag diversi da noi scelti:
+All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su 10 hashtag diversi da noi scelti:
 
  - **Prada**  
  - **Armani**   
@@ -38,12 +38,14 @@ La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni 
 |Tipo di funzione| Descrizione |
 |--|--|
 | **Metadata** |elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
-|**Data**| elenco fino ad un massimo di 100 post per ognuno degli hashtag    
+|**Data**| elenco fino ad un massimo di 100 post per ogni hashtag    
 |**Stats**| Statistiche su alcuni parametri dei posts
 |**Filters**| Filtraggio dei dati rispetto ad alcuni parametri
 
 
 ## Rotte dell'applicazione
+Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
+
 
 > **GET /data**
 
@@ -95,35 +97,46 @@ I filtri realizzati sono i seguenti:
 |Followers, retweets e likes| **{ "Followers" : [ "<" , "345"] }**
 |Data| **{ "Before" : "07/06/2020" }** - oppure - **{ "After" : "07/06/2020" }** - oppure - **{ "Between" : [ "07/06/2020" , "09/06/2020" ] }**
  
-Per esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
+Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
 
-Si passa un body del tipo: 
+Si genera un body del tipo: 
 
     {
       "#" : [ "Prada", "Gucci" ]
     }
 
-per avere come risultato, sempre all'interno di un file JSON, fino ad un massimo di 100 posts relativi soltanto agli hashtags Prada e Gucci.
+per avere come risultato, sempre all'interno di un file JSON, fino ad un massimo di 100 posts (per hashtag) relativi soltanto agli hashtags Prada e Gucci.
 
-E' anche possibile costruire un body per applicare più filtri di diversa natura, come per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
+E' anche possibile costruire un body per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
     {
-      {"#" : ["Gucci", "Dior"]}, 
-      {"Language" : ["it", "ja", "fr"]}, 
-      {"Between" : ["07/06/2020", "09/06/2020"]}
+      ["#" : ["Gucci", "Dior"]], 
+      ["Language" : ["it", "ja", "fr"]], 
+      ["Between" : ["07/06/2020", "09/06/2020"]]
     }
 
 
 
 ## Gestione delle eccezioni
 
-Sono stati sviluppati anche delle eccezioni personalizzate, che vengono lanciate a seconda dei diversi casi:
+Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate a seconda dei diversi errori generati:
 
  
 |Eccezione| Descrizione |
 |--|--|
 | **DuplicateFilterException** |Se il filtro è composto da più filtri contenenti la stessa chiave |
-|**IllegalFilterValueException** | Se uno dei valori inserito dall'utente nel filtro è errato
+|**IllegalFilterValueException** | Se uno dei valori inseriti dall'utente nel filtro è errato
 |**IllegalTimeException**| Se un'eventuale data del filtro è stata inserita in un modo **NON** consentito
 |**IllegalFilterValueSizeException**| Se uno dei valori inseriti dall'utente nel filtro è di dimensione **NON** consentita
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
+
+## UML
+
+**PACKAGE**
+
+![Package](UML/Package.jpg)
+
+
+**USE CASE DIAGRAM**
+
+![UseCase](UML/UseCaseDiagram.jpg)
