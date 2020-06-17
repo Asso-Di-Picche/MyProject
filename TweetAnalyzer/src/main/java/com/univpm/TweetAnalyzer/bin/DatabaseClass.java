@@ -148,12 +148,13 @@ public class DatabaseClass {
 				System.out.println(ex.getClass().getSimpleName() + " URL " + url + " Does Not Exist!");
 			}
 		}
-		System.out.println("Download was Successful!");
 		}
-		catch(ArithmeticException ex) {
+		catch(Exception ex) {
 			System.out.println(ex.getClass().getSimpleName() + ": hashtags.txt File is Compromised!");
 		}
+		System.out.println("Download was Successful!");
 	}
+	
 	/**
 	 * Questo metodo serve ad Associare ciascun Hashtag ai corrispondenti Tweet Scaricati. 
 	 */
