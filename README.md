@@ -116,7 +116,7 @@ I filtri realizzati sono i seguenti:
 |Before| Filtra i Tweet scritti prima di una determinata Data e Ora |
 |Between| Filtra i Tweet compresi tra due determinate Date e Ore |
 
-## Filtro: #
+### "#"
  
 Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
 
