@@ -15,7 +15,7 @@ public class DataToTest {
 	private static Map<String, Map<Integer, Data>> dataTest = new HashMap<String, Map<Integer, Data>>();
 	
 	/**
-	 * @return Il Database da Testare rimepito con 10 Tweet Fittizi.
+	 * @return Il Database da Testare riempito con 10 Tweet Fittizi.
 	 */
 	
 	public static Map<String, Map<Integer, Data>> getDatasToTest() {
@@ -23,7 +23,7 @@ public class DataToTest {
 	}
 	
 	/**
-	 * Qui Viene Riempita manuelmente la Map costituente il Database Fittizio.
+	 * Qui Viene Riempita manualmente la Map costituente il Database Fittizio.
 	 * @return Il Database da Testare.
 	 */
 

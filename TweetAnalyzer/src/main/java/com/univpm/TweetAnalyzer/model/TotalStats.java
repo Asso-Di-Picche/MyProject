@@ -1,5 +1,6 @@
 package com.univpm.TweetAnalyzer.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,18 +12,18 @@ import java.util.Objects;
 public class TotalStats {
 
     private long totRetweets, totLikes;
-    public List<SingleStats> Hashtags;
+    public ArrayList<SingleStats> Hashtags;
 
     public TotalStats() {
 	}
 
-    public TotalStats(long totRetweets, long totLikes, List<SingleStats> Hashtags) {
+    public TotalStats(long totRetweets, long totLikes, ArrayList<SingleStats> Hashtags) {
         this.totRetweets = totRetweets;
         this.totLikes = totLikes;
         this.Hashtags = Hashtags;
     }
 
-	public void setHashtags(List<SingleStats> Hashtags) {
+	public void setHashtags(ArrayList<SingleStats> Hashtags) {
 		this.Hashtags = Hashtags;
 	}
 
