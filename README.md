@@ -15,7 +15,7 @@ All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per
  - **Dior**
  - **Benetton**
 
-Una volta interrogata l'API, vengono restituiti i dati sotto forma di file JSON. Si procede dunque al parsing dei campi di interesse all'interno di una Map creata per l'occasione.
+Una volta interrogata l'API, vengono restituiti i dati sotto forma di JSON. Si procede dunque al parsing dei campi di interesse all'interno di una Map creata per l'occasione.
 
 I campi di interesse scelti per l'analisi sono i seguenti: 
 
@@ -34,7 +34,7 @@ Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il tes
 
 All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo ***hashtags.txt*** della cartella ***Files***.
 
-Se l'Utente **non** modifica il File verranno scaricati gli hashtags già presenti nel suddetto.
+Se l'Utente **non** modifica il File, verranno scaricati gli hashtags già presenti nel suddetto.
 Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es: ***#***) sulla stessa riga.
 
 Eventuali errori di inserimento da parte dell'Utente sono gestiti in ogni caso da opportune Eccezioni.
@@ -47,7 +47,7 @@ La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni 
 |Tipo di Chiamata|Rotta| Descrizione |
 |--|--|--|
 |**GET**| **/metadata** |Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
-|**GET**|**/data**| Elenco dei tweet raccolti, fino ad un massimo di 100 post per ogni hashtag|
+|**GET**|**/data**| Elenco dei tweet raccolti|
 |**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente|    
 |**GET**|**/stats**| Statistiche su alcuni parametri dei posts|
 |**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati|
@@ -101,14 +101,22 @@ Restituisce le statistiche sul numero di Likes e Retweets totalizzati per ogni h
 
 Questa particolare chiamata, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
 
+## Filtri
+
 I filtri realizzati sono i seguenti:
 
-|Tipo di filtro| Esempio di body da inserire |
+|Chiave del Filtro| Descrizione |
 |--|--|
-| Hashtag | **{ "#" : "Prada" }** - oppure - **{ "#" : [ "Gucci", "Dior" , "Prada" ] }**|
-| Lingua    | **{ "Language" : "it" }** - oppure - **{ "Language" : [ "it", "ja", "fr" ] }**
-|Followers, Retweets e Likes| **{ "Followers" : [ "<" , "345"] }** - oppure - **{ "Retweets" : [ ">" , "345"] }** - oppure - **{"Likes" : [ "150", "350" ]**}
-|Data| **{ "Before" : "07/06/2020 13:30" }** - oppure - **{ "After" : "07/06/2020 13:30" }** - oppure - **{ "Between" : [ "07/06/2020 17:15" , "09/06/2020 19:45" ] }**
+| # | Filtra in base ad uno o più Hashtag |
+| Language | Filtra in base ad una o più Lingue |
+|Followers| Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers |
+|Retweets| Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets |
+|Likes| Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes |
+|After| Filtra i Tweet scritti dopo una determinata Data e Ora |
+|Before| Filtra i Tweet scritti prima di una determinata Data e Ora |
+|Between| Filtra i Tweet compresi tra due determinate Date e Ore |
+
+## Filtro: #
  
 Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
 
