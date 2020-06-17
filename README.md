@@ -35,7 +35,7 @@ Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il tes
 All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo ***hashtags.txt*** della cartella ***Files***.
 
 Se l'Utente **non** modifica il File verranno scaricati gli hashtags già presenti nel suddetto.
-Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es. "#") sulla stessa riga.
+Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es: ***#***) sulla stessa riga.
 
 Eventuali errori di inserimento da parte dell'Utente sono gestiti in ogni caso da opportune Eccezioni.
 
@@ -120,7 +120,7 @@ E' anche possibile costruire un body per applicare più filtri di diversa natura
 
     {
       ["#" : ["Gucci", "Dior"]], 
-      ["Language" : ["it", "ja", "fr"]], 
+      ["Language" : "en"], 
       ["Between" : ["07/06/2020", "09/06/2020"]]
     }
 
@@ -169,7 +169,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Model](UML/ModelPackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.time**
+**com.univpm.TweetAnalyzer.model.time**
 
 ![Time](UML/TimePackageUML.jpg)
 
@@ -184,19 +184,24 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Service](UML/ServicePackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.filter**
+**com.univpm.TweetAnalyzer.other.filter**
 
 ![Filter](UML/FilterPackageUML.jpg)
-
-
-**GET /data**
-
-![Data](UML/getDataUML.jpg)
 
 
 **GET /metadata**
 
 ![Metadata](UML/getMetadataUML.jpg)
+
+
+**POST /data**
+
+![Data](UML/postDataUML.jpg)
+
+
+**GET /data**
+
+![Data](UML/getDataUML.jpg)
 
 
 **GET /stats**
@@ -207,8 +212,3 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 **POST /stats**
 
 ![Stats](UML/postStatsUML.jpg)
-
-
-**POST /data**
-
-![Data](UML/postDataUML.jpg)
