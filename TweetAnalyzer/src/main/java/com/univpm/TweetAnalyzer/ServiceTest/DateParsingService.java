@@ -9,9 +9,21 @@ import com.univpm.TweetAnalyzer.model.time.Date;
 import com.univpm.TweetAnalyzer.model.time.Hours;
 import com.univpm.TweetAnalyzer.model.time.Time;
 
+/**
+ * Questa è la Classe che si occupa di fare il Parsing di Date JSON.
+ */
+
 public class DateParsingService {
 	
-	public static Time filterValueDateParsing(String filterValue) throws IllegalFilterValueException{
+	/**
+	 * Questo Metodo istanzia Oggetti di tipo Time a partire da un Filtro per Date.
+	 * @param filterValue Contiene la Stringa che costrituisce una Data inserita dall'Utente nel Filtro JSON.
+	 * @return Un Oggetto di tipo Time corrispondentemente al FilterValue.
+	 * @throws IllegalFilterValueException Viene lanciata se la Data del Filtro NON è ben posta.
+	 */
+	
+	public static Time filterValueDateParsing(String filterValue)
+			throws IllegalFilterValueException {
 		Scanner in = new Scanner(filterValue);
 		String tmpStr = "";
 		String subStr = "";
@@ -47,7 +59,12 @@ public class DateParsingService {
 		return new Time(new Date(Day, Month, Year), new Hours(Hour, Minute));
 	}
 	
-
+	/**
+	 * Questo Metodo costruisce una Stringa contenente una Data a partire da un Tweet.
+	 * @param entry Contiene un Tweet dal quale istanziare un Oggetto Time.
+	 * @return Un Oggetto di tipo Time contenente la Data relativa al Tweet.
+	 */
+	
 	public static Time cmpTimeIstance(Map.Entry<Integer, Data> entry) {
 		String dateString = "";
 		String subDateString = "";
@@ -59,6 +76,12 @@ public class DateParsingService {
 		
 		return dataDateParsing(subDateString);
 	}
+	
+	/**
+	 * Questo Metodo inizializza un Oggetto di tipo Time a partire da una Stringa.
+	 * @param subDateString È una Stringa contenente una Data.
+	 * @return Una nuova Istanza di Time.
+	 */
 	
 	public static Time dataDateParsing(String subDateString) {
 		Scanner in = new Scanner(subDateString);

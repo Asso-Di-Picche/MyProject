@@ -256,7 +256,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![UseCase](UML/UseCaseDiagram.jpg)
 
 
-**com.univpm.TweetAnalyzer.bin**
+**com.univpm.TweetAnalyzer.DatabaseClassTest**
 
 ![Bin](UML/BinPackageUML.jpg)
 
@@ -281,7 +281,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Exception](UML/ExceptionPackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.service**
+**com.univpm.TweetAnalyzer.ServiceTest**
 
 ![Service](UML/ServicePackageUML.jpg)
 

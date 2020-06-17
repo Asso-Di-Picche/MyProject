@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.univpm.TweetAnalyzer.bin.DatabaseClass;
+import com.univpm.TweetAnalyzer.DatabaseClassTest.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.FilterNotFoundException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
-import com.univpm.TweetAnalyzer.service.FilterService;
+import com.univpm.TweetAnalyzer.ServiceTest.FilterService;
 
 @RestController
 public class ControllerClass {
