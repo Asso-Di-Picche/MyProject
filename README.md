@@ -101,6 +101,12 @@ Restituisce le statistiche sul numero di Likes e Retweets totalizzati per ogni h
 
 Questa particolare chiamata, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
 
+
+> **POST /stats**
+
+È possibile ottenere Statistiche su un numero limitato di Dati. Infatti specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'Utente la possibilità di inserire un Filtro dei precedenti, per limitare il numero di Dati da Analizzare. In seguito all'inserimento del body saranno restituite delle Statistiche sui Tweet filtrati.    
+
+
 ## Filtri
 
 I filtri realizzati sono i seguenti:
@@ -224,11 +230,6 @@ E' anche possibile costruire un Filtro Complesso, composto di più Body, per app
 
 È buona norma non utilizzare chiavi duplicate al fine di non generare Eccezioni.
 
-> **POST /stats**
-
-È possibile ottenere Statistiche su un numero limitato di Dati. Infatti specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'Utente la possibilità di inserire un Filtro dei precedenti, per limitare il numero di Dati da Analizzare. In seguito all'inserimento del body saranno restituite delle Statistiche sui Tweet filtrati.    
-
-
 ## Gestione delle eccezioni
 
 Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate a seconda dei diversi errori generati:
@@ -241,6 +242,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 |**IllegalTimeException**| Se un'eventuale data del filtro è stata inserita in un modo **NON** consentito
 |**IllegalFilterValueSizeException**| Se uno dei valori inseriti dall'utente nel filtro è di dimensione **NON** consentita
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
+
 
 ## UML
 
