@@ -1,5 +1,7 @@
 package com.univpm.TweetAnalyzer.model;
 
+import java.util.Objects;
+
 /**
  * Classe le cui Istanze sono usate per contenere Dati relativi a un Tweet.
  */
@@ -77,5 +79,23 @@ public class Data{
 	public void setFollowers(long followers) {
 		Followers = followers;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Data)) return false;
+		Data data = (Data) o;
+		return postID == data.postID &&
+				Followers == data.Followers &&
+				Retweets == data.Retweets &&
+				Likes == data.Likes &&
+				Language.equals(data.Language) &&
+				Username.equals(data.Username) &&
+				Date.equals(data.Date);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Language, Username, Date, postID, Followers, Retweets, Likes);
+	}
 }

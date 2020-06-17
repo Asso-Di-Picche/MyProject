@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.test;
+package com.univpm.TweetAnalyzer.util.filter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class DataToTest {
 	 * Qui Viene Riempita la Map costituente il Database Fittizio.
 	 * @return Il Database da Testare.
 	 */
-	
+
 	public static Map<String, Map<Integer, Data>> datasInsertion() {
 		dataTest.put("Prada", innerMapFill(1, new Data(
 				"en", "test", "Tue Jun 16 10:00:00 +0000 2020", 123, 1000, 100, 800)));
@@ -41,11 +41,11 @@ public class DataToTest {
 		dataTest.put("Trussardi", innerMapFill(6, new Data(
 				"it", "test", "Tue Jun 11 5:00:00 +0000 2020", 123, 500, 600, 400)));
 		dataTest.put("Valentino", innerMapFill(7, new Data(
-				"en", "test", "Tue Jun 10 4:00:00 +0000 2020", 123, 400, 700, 500)));
+				"ja", "test", "Tue Jun 10 4:00:00 +0000 2020", 123, 400, 700, 500)));
 		dataTest.put("Zegna", innerMapFill(8, new Data(
-				"it", "test", "Tue Jun 9 3:00:00 +0000 2020", 123, 300, 800, 600)));
-		dataTest.put("Dior", innerMapFill(9, new Data(
-				"en", "test", "Tue Jun 8 2:00:00 +0000 2020", 123, 200, 900, 700)));
+				"ja", "test", "Tue Jun 9 3:00:00 +0000 2020", 123, 300, 800, 600)));
+		dataTest.put("Benetton", innerMapFill(9, new Data(
+				"it", "test", "Tue Jun 8 2:00:00 +0000 2020", 123, 200, 900, 700)));
 		dataTest.put("Benetton", innerMapFill(10, new Data(
 				"it", "test", "Tue Jun 7 1:00:00 +0000 2020", 123, 100, 1000, 800)));
 		return dataTest;
@@ -63,5 +63,5 @@ public class DataToTest {
 		innerMap.put(index, data);
 		return innerMap;
 	}
-	
+
 }
