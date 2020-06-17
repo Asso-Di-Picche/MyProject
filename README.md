@@ -2,7 +2,7 @@
 
 Tweets Analyzer è una Spring Boot Web App sviluppata in Java, in grado di interfacciarsi con le API Search di Twitter per raccogliere dati inerenti ad alcuni hashtag a scelta dell'utente, al fine di sviluppare uno studio di analisi statistica e di impatto sui dati raccolti.
 
-All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su 10 hashtag diversi da noi scelti:
+All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su hashtag scelti dall'Utente. Nel caso in cui non venisse effettuata alcuna scelta sugli hashtag da analizzare, l'Applicazione procederà alla raccolta automatica dei seguenti:
 
  - **Prada**  
  - **Armani**   
@@ -30,21 +30,35 @@ I campi di interesse scelti per l'analisi sono i seguenti:
 
 Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il testing delle API.
 
+## Scelta degli Hashtag
+
+All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo ***hashtags.txt*** della cartella ***Files***.
+
+Se l'Utente **non** modifica il File verranno scaricati gli hashtags già presenti nel suddetto.
+Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es: ***#***) sulla stessa riga.
+
+Eventuali errori di inserimento da parte dell'Utente sono gestiti in ogni caso da opportune Eccezioni.
+
 ## Utilizzo della Spring Web App
 
 La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni mediante richieste **API REST (GET o POST)** :
 
 
-|Tipo di funzione| Descrizione |
-|--|--|
-| **Metadata** |elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
-|**Data**| elenco fino ad un massimo di 100 post per ogni hashtag    
-|**Stats**| Statistiche su alcuni parametri dei posts
-|**Filters**| Filtraggio dei dati rispetto ad alcuni parametri
-
+|Tipo di Chiamata|Rotta| Descrizione |
+|--|--|--|
+|**GET**| **/metadata** |Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
+|**GET**|**/data**| Elenco dei tweet raccolti, fino ad un massimo di 100 post per ogni hashtag|
+|**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente|    
+|**GET**|**/stats**| Statistiche su alcuni parametri dei posts|
+|**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati|
 
 ## Rotte dell'applicazione
 Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
+
+
+> **GET /metadata**
+
+Restituisce i metadata (ovvero i campi d'interesse analizzati) precedentemente specificati.
 
 
 > **GET /data**
@@ -58,35 +72,34 @@ Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:
                 "followers":  39,
                 "likes":  2,
                 "retweets":  0
-            }
+            },
+            {
             ....
 
 Restituisce tutti i dati scaricati in seguito all'avvio della app e al login all'interno dell'API.
 
 
-> **GET /metadata**
-
-Restituisce i metadata (ovvero i campi d'interesse analizzati) precedentemente specificati.
-
-
 > **GET /stats**
 
-    {
+    [
+       {
         "hashtag":  "Prada",
         "total likes":  1089882,
         "total retweets":  15013,
         "percLikes":  "3.8%",
         "percRetweets":  "0.76%",
         "postsPerDay":  48.5
-     }
-     ...
+        },
+        {
+        ...
+     ]
 
-Restituisce le statistiche sul numero di likes e retweets totalizzato da un determinato hashtag su un massimo di 100 post, oltre ad una percentuale di likes e retweets sul totale dei post analizzati e al numero di post al giorno.
+Restituisce le statistiche sul numero di Likes e Retweets totalizzati per ogni hashtag, oltre ad una percentuale di likes e retweets sul totale dei post analizzati e al numero di post al giorno.
 
 
 > **POST /data**
 
-Questo particolare metodo, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
+Questa particolare chiamata, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
 
 I filtri realizzati sono i seguenti:
 
@@ -94,8 +107,8 @@ I filtri realizzati sono i seguenti:
 |--|--|
 | Hashtag | **{ "#" : "Prada" }** - oppure - **{ "#" : [ "Gucci", "Dior" , "Prada" ] }**|
 | Lingua    | **{ "Language" : "it" }** - oppure - **{ "Language" : [ "it", "ja", "fr" ] }**
-|Followers, retweets e likes| **{ "Followers" : [ "<" , "345"] }**
-|Data| **{ "Before" : "07/06/2020" }** - oppure - **{ "After" : "07/06/2020" }** - oppure - **{ "Between" : [ "07/06/2020" , "09/06/2020" ] }**
+|Followers, Retweets e Likes| **{ "Followers" : [ "<" , "345"] }** - oppure - **{ "Retweets" : [ ">" , "345"] }** - oppure - **{"Likes" : [ "150", "350" ]**}
+|Data| **{ "Before" : "07/06/2020 13:30" }** - oppure - **{ "After" : "07/06/2020 13:30" }** - oppure - **{ "Between" : [ "07/06/2020 17:15" , "09/06/2020 19:45" ] }**
  
 Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
 
@@ -105,16 +118,19 @@ Si genera un body del tipo:
       "#" : [ "Prada", "Gucci" ]
     }
 
-per avere come risultato, sempre all'interno di un file JSON, fino ad un massimo di 100 posts (per hashtag) relativi soltanto agli hashtags Prada e Gucci.
+per avere restituiti soltanto i Tweets relativi agli hashtags Prada e Gucci.
 
-E' anche possibile costruire un body per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
+E' anche possibile costruire un Filtro Complesso, composto di più Body, per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
-    {
-      ["#" : ["Gucci", "Dior"]], 
-      ["Language" : ["it", "ja", "fr"]], 
-      ["Between" : ["07/06/2020", "09/06/2020"]]
-    }
+    [
+      {"#" : ["Gucci", "Dior"]}, 
+      {"Language" : "en"}, 
+      {"Between" : ["07/06/2020", "09/06/2020"]}
+    ]
 
+> **POST /stats**
+
+È possibile ottenere Statistiche su un numero limitato di Dati. Infatti specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'Utente la possibilità di inserire un Filtro dei precedenti, per limitare il numero di Dati da Analizzare. In seguito all'inserimento del body saranno restituite delle Statistiche sui Tweet filtrati.    
 
 
 ## Gestione delle eccezioni
@@ -157,7 +173,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Model](UML/ModelPackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.time**
+**com.univpm.TweetAnalyzer.model.time**
 
 ![Time](UML/TimePackageUML.jpg)
 
@@ -172,14 +188,9 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Service](UML/ServicePackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.filter**
+**com.univpm.TweetAnalyzer.other.filter**
 
 ![Filter](UML/FilterPackageUML.jpg)
-
-
-**GET /data**
-
-![Data](UML/getDataUML.jpg)
 
 
 **GET /metadata**
@@ -187,12 +198,21 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Metadata](UML/getMetadataUML.jpg)
 
 
+**GET /data**
+
+![Data](UML/getDataUML.jpg)
 
 
+**POST /data**
+
+![Data](UML/postDataUML.jpg)
 
 
+**GET /stats**
+
+![Stats](UML/getStatsUML.jpg)
 
 
+**POST /stats**
 
-
-
+![Stats](UML/postStatsUML.jpg)
