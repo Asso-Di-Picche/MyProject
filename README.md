@@ -32,7 +32,7 @@ Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il tes
 
 ## Scelta degli Hashtag
 
-All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo hashtags.txt della cartella Files.
+All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo ***hashtags.txt*** della cartella ***Files***.
 
 Se l'Utente **non** modifica il File verranno scaricati gli hashtags già presenti nel suddetto.
 Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es. "#") sulla stessa riga.
