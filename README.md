@@ -107,34 +107,122 @@ I filtri realizzati sono i seguenti:
 
 |Chiave del Filtro| Descrizione |
 |--|--|
-| # | Filtra in base ad uno o più Hashtag |
-| Language | Filtra in base ad una o più Lingue |
-|Followers| Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers |
-|Retweets| Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets |
-|Likes| Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes |
-|After| Filtra i Tweet scritti dopo una determinata Data e Ora |
-|Before| Filtra i Tweet scritti prima di una determinata Data e Ora |
-|Between| Filtra i Tweet compresi tra due determinate Date e Ore |
+| "#" | Filtra in base ad uno o più Hashtag |
+| "Language" | Filtra in base ad una o più Lingue |
+| "Followers" | Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers |
+| "Retweets" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets |
+| "Likes" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes |
+| "After" | Filtra i Tweet scritti dopo una determinata Data e Ora |
+| "Before" | Filtra i Tweet scritti prima di una determinata Data e Ora |
+| "Between" | Filtra i Tweet compresi tra due determinate Date e Ore |
 
-### "#"
- 
-Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
+### "#":
 
-Si genera un body del tipo: 
+L'Utente può generare un body del tipo: 
 
     {
-      "#" : [ "Prada", "Gucci" ]
+      "#" : "Prada"
     }
 
-per avere restituiti soltanto i Tweets relativi agli hashtags Prada e Gucci.
+per avere restituiti soltanto i Tweets relativi all' hashtags Prada.
+
+Oppure può essere scritto un body del tipo: 
+
+    {
+      "#" : [ "Prada", "Gucci", "Dior", ...]
+    }
+
+per avere restituiti soltanto i Tweets relativi agli hashtag Prada, Gucci e Dior.
+
+### "Language":
+
+L'Utente può generare un body del tipo: 
+
+    {
+      "Language" : "en"
+    }
+
+per avere restituiti soltanto i Tweet scritti in Inglese.
+
+Oppure può essere scritto un body del tipo: 
+
+    {
+      "Language" : [ "it", "es", "ja"]
+    }
+
+per avere restituiti soltanto i Tweet scritti in Italiano, Spagnolo e Giapponese.
+È buona norma scrivere le lingue in conformazione al Codice di lingua IETF per non generare Eccezioni.
+
+### "Followers", "Retweets", "Likes":
+
+L'Utente può generare un body del tipo: 
+
+    {
+       KEY : [ ">", "150" ]
+    }
+
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Maggiori di 150**.
+
+Oppure può essere scritto un body del tipo: 
+
+    {
+       KEY : [ "<", "150" ]
+    }
+
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Minori di 150**.
+
+Oppure può essere scritto un body del tipo: 
+
+    {
+       KEY : [ "150", "350" ]
+    }
+
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Compresi tra 150 e 350**.
+
+### "After", "Before", "Between":
+
+L'Utente può generare un body del tipo: 
+
+    {
+      "After" : "10/05/2020 15:30"
+    }
+
+per avere restituiti soltanto i Tweet scritti **dopo** le 15:30 del giorno 10/05/2020.
+
+Oppure può essere scritto un body del tipo: 
+
+    {
+      "Before" : "10/05/2020 15:30"
+    }
+
+per avere restituiti soltanto i Tweet scritti **prima** le 15:30 del giorno 10/05/2020.
+
+Oppure può essere scritto un body del tipo:
+
+    {
+      "Between" : [ "10/05/2020 15:30", "12/05/2020 19:45" ]
+    }
+
+per avere restituiti soltanto i Tweet scritti in una fascia di tempo **compresa** tra le ore 15:30 del giorno 10/05/2020 e le ore 19:45 del giorno 19:45.
+È buona norma seguire la formattazione delle date qui rappresentata al fine di non generare Eccezioni.
+
+### Filtri Complessi
 
 E' anche possibile costruire un Filtro Complesso, composto di più Body, per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
     [
-      {"#" : ["Gucci", "Dior"]}, 
-      {"Language" : "en"}, 
-      {"Between" : ["07/06/2020", "09/06/2020"]}
+      {
+      "#" : [ "Gucci", "Dior" ]
+      }, 
+      {
+      "Language" : "en"
+      }, 
+      {
+      "Between" : ["07/06/2020 8:00", "09/06/2020 12:15"]
+      }
     ]
+
+È buona norma non utilizzare chiavi duplicate al fine di non generare Eccezioni.
 
 > **POST /stats**
 
