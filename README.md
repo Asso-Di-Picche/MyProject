@@ -46,11 +46,11 @@ La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni 
 
 |Tipo di Chiamata|Rotta| Descrizione |
 |--|--|--|
-|**GET**| **/metadata** |Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
-|**GET**|**/data**| Elenco dei tweet raccolti|
-|**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente|    
-|**GET**|**/stats**| Statistiche su alcuni parametri dei posts|
-|**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati|
+|**GET**| **/metadata** | Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti |
+|**GET**|**/data**| Elenco dei tweet raccolti
+|**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente  
+|**GET**|**/stats**| Statistiche su alcuni parametri dei posts
+|**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati
 
 ## Rotte dell'applicazione
 Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
@@ -114,13 +114,13 @@ I filtri realizzati sono i seguenti:
 |Chiave del Filtro| Descrizione |
 |--|--|
 | "#" | Filtra in base ad uno o più Hashtag |
-| "Language" | Filtra in base ad una o più Lingue |
-| "Followers" | Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers |
-| "Retweets" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets |
-| "Likes" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes |
-| "After" | Filtra i Tweet scritti dopo una determinata Data e Ora |
-| "Before" | Filtra i Tweet scritti prima di una determinata Data e Ora |
-| "Between" | Filtra i Tweet compresi tra due determinate Date e Ore |
+| "Language" | Filtra in base ad una o più Lingue 
+| "Followers" | Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers 
+| "Retweets" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets 
+| "Likes" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes 
+| "After" | Filtra i Tweet scritti dopo una determinata Data e Ora 
+| "Before" | Filtra i Tweet scritti prima di una determinata Data e Ora 
+| "Between" | Filtra i Tweet compresi tra due determinate Date e Ore 
 
 ### "#":
 
@@ -242,7 +242,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 |**IllegalTimeException**| Se un'eventuale data del filtro è stata inserita in un modo **NON** consentito
 |**IllegalFilterValueSizeException**| Se uno dei valori inseriti dall'utente nel filtro è di dimensione **NON** consentita
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
-
+|**StatisticsNotAppliedException**| Se per qualche ragione non è stato possibile calcolare Statistiche sui Tweet
 
 ## UML
 
