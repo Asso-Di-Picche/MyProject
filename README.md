@@ -56,6 +56,11 @@ La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni 
 Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
 
 
+> **GET /metadata**
+
+Restituisce i metadata (ovvero i campi d'interesse analizzati) precedentemente specificati.
+
+
 > **GET /data**
 
     "Prada":  {
@@ -67,35 +72,34 @@ Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:
                 "followers":  39,
                 "likes":  2,
                 "retweets":  0
-            }
+            },
+            {
             ....
 
 Restituisce tutti i dati scaricati in seguito all'avvio della app e al login all'interno dell'API.
 
 
-> **GET /metadata**
-
-Restituisce i metadata (ovvero i campi d'interesse analizzati) precedentemente specificati.
-
-
 > **GET /stats**
 
-    {
+    [
+       {
         "hashtag":  "Prada",
         "total likes":  1089882,
         "total retweets":  15013,
         "percLikes":  "3.8%",
         "percRetweets":  "0.76%",
         "postsPerDay":  48.5
-     }
-     ...
+        },
+        {
+        ...
+     ]
 
-Restituisce le statistiche sul numero di likes e retweets totalizzato da un determinato hashtag su un massimo di 100 post, oltre ad una percentuale di likes e retweets sul totale dei post analizzati e al numero di post al giorno.
+Restituisce le statistiche sul numero di Likes e Retweets totalizzati per ogni hashtag, oltre ad una percentuale di likes e retweets sul totale dei post analizzati e al numero di post al giorno.
 
 
 > **POST /data**
 
-Questo particolare metodo, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
+Questa particolare chiamata, a seguito dell'inserimento di determinati parametri passati all'app attraverso un body, restituisce dei dati filtrati.
 
 I filtri realizzati sono i seguenti:
 
@@ -114,19 +118,19 @@ Si genera un body del tipo:
       "#" : [ "Prada", "Gucci" ]
     }
 
-per avere come risultato, sempre all'interno di un file JSON, fino ad un massimo di 100 posts (per hashtag) relativi soltanto agli hashtags Prada e Gucci.
+per avere restituiti soltanto i Tweets relativi agli hashtags Prada e Gucci.
 
-E' anche possibile costruire un body per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
+E' anche possibile costruire un Filtro Complesso, composto di più Body, per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
-    {
-      ["#" : ["Gucci", "Dior"]], 
-      ["Language" : "en"], 
-      ["Between" : ["07/06/2020", "09/06/2020"]]
-    }
+    [
+      {"#" : ["Gucci", "Dior"]}, 
+      {"Language" : "en"}, 
+      {"Between" : ["07/06/2020", "09/06/2020"]}
+    ]
 
 > **POST /stats**
 
-Unito ad un body costruito come i precedenti, restituisce le statistiche rispetto ai post filtrati.
+È possibile ottenere Statistiche su un numero limitato di Dati. Infatti specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'Utente la possibilità di inserire un Filtro dei precedenti, per limitare il numero di Dati da Analizzare. In seguito all'inserimento del body saranno restituite delle Statistiche sui Tweet filtrati.    
 
 
 ## Gestione delle eccezioni
