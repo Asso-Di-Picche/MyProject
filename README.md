@@ -30,6 +30,15 @@ I campi di interesse scelti per l'analisi sono i seguenti:
 
 Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il testing delle API.
 
+## Scelta degli Hashtag
+
+All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo hashtags.txt della cartella Files.
+
+Se l'Utente **non** modifica il File verranno scaricati gli hashtags già presenti nel suddetto.
+Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es. "#") sulla stessa riga.
+
+Eventuali errori di inserimento da parte dell'Utente sono gestiti in ogni caso da opportune Eccezioni.
+
 ## Utilizzo della Spring Web App
 
 La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni mediante richieste **API REST (GET o POST)** :
