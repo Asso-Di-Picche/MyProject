@@ -194,14 +194,14 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 ![Metadata](UML/getMetadataUML.jpg)
 
 
-**POST /data**
-
-![Data](UML/postDataUML.jpg)
-
-
 **GET /data**
 
 ![Data](UML/getDataUML.jpg)
+
+
+**POST /data**
+
+![Data](UML/postDataUML.jpg)
 
 
 **GET /stats**
