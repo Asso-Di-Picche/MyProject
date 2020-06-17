@@ -94,7 +94,7 @@ I filtri realizzati sono i seguenti:
 |--|--|
 | Hashtag | **{ "#" : "Prada" }** - oppure - **{ "#" : [ "Gucci", "Dior" , "Prada" ] }**|
 | Lingua    | **{ "Language" : "it" }** - oppure - **{ "Language" : [ "it", "ja", "fr" ] }**
-|Followers, Retweets e Likes| **{ "Followers" : [ "<" , "345"] }** - oppure - **{"Followers" : [ "150", "350" ]**}
+|Followers, Retweets e Likes| **{ "Followers" : [ "<" , "345"] }** - oppure - **{ "Retweets" : [ ">" , "345"] }** - oppure - **{"Likes" : [ "150", "350" ]**}
 |Data| **{ "Before" : "07/06/2020 13:30" }** - oppure - **{ "After" : "07/06/2020 13:30" }** - oppure - **{ "Between" : [ "07/06/2020 17:15" , "09/06/2020 19:45" ] }**
  
 Ad esempio, si può filtrare rispetto ad alcuni hashtags in particolare (es. "Prada" e "Gucci"):
