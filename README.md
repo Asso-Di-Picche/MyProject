@@ -2,7 +2,7 @@
 
 Tweets Analyzer è una Spring Boot Web App sviluppata in Java, in grado di interfacciarsi con le API Search di Twitter per raccogliere dati inerenti ad alcuni hashtag a scelta dell'utente, al fine di sviluppare uno studio di analisi statistica e di impatto sui dati raccolti.
 
-All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su 10 hashtag diversi da noi scelti:
+All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su hashtag scelti dall'Utente. Nel caso in cui non venisse effettuata alcuna scelta sugli hashtag da analizzare, l'Applicazione procederà alla raccolta automatica dei seguenti:
 
  - **Prada**  
  - **Armani**   
@@ -35,13 +35,13 @@ Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il tes
 La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni mediante richieste **API REST (GET o POST)** :
 
 
-|Tipo di funzione| Descrizione |
-|--|--|
-| **Metadata** |elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
-|**Data**| elenco fino ad un massimo di 100 post per ogni hashtag    
-|**Stats**| Statistiche su alcuni parametri dei posts
-|**Filters**| Filtraggio dei dati rispetto ad alcuni parametri
-
+|Tipo di Chiamata|Rotta| Descrizione |
+|--|--|--|
+|**GET**| **/metadata** |Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti|
+|**GET**|**/data**| Elenco dei tweet raccolti, fino ad un massimo di 100 post per ogni hashtag|
+|**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente|    
+|**GET**|**/stats**| Statistiche su alcuni parametri dei posts|
+|**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati|
 
 ## Rotte dell'applicazione
 Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
