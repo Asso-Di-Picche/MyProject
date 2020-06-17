@@ -2,7 +2,7 @@
 
 Tweets Analyzer è una Spring Boot Web App sviluppata in Java, in grado di interfacciarsi con le API Search di Twitter per raccogliere dati inerenti ad alcuni hashtag a scelta dell'utente, al fine di sviluppare uno studio di analisi statistica e di impatto sui dati raccolti.
 
-All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per raccogliere un massimo di 100 post (fino a 7 giorni prima, caratteristica dell'API Search di base) su hashtag scelti dall'Utente. Nel caso in cui non venisse effettuata alcuna scelta sugli hashtag da analizzare, l'Applicazione procederà alla raccolta automatica dei seguenti:
+All'avvio dell'applicazione, viene eseguito in automatico il download dei dati dei tweets (per raccogliere un massimo di 100 post fino a 7 giorni prima, caratteristica dell'API Search di base) relativi agli hashtags nel file di testo ***hashtags.txt***, contenuto nella cartella ***Files***:
 
  - **Prada**  
  - **Armani**   
@@ -15,9 +15,17 @@ All'avvio del programma, viene eseguita l'autenticazione all'API di Twitter, per
  - **Dior**
  - **Benetton**
 
-Una volta interrogata l'API, vengono restituiti i dati sotto forma di JSON. Si procede dunque al parsing dei campi di interesse all'interno di una Map creata per l'occasione.
 
-I campi di interesse scelti per l'analisi sono i seguenti: 
+Se l'utente **non** modifica il file, verranno scaricati i dati degli hashtags già presenti nel suddetto file.
+
+Quest'ultimo deve essere scritto dall'utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sotto l'altro. 
+Il file **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es: ***#***) sulla stessa riga.
+
+Eventuali errori di inserimento da parte dell'utente sono gestiti in ogni caso da opportune eccezioni.
+
+Una volta raccolti **tutti** i dati, quest'ultimi vengono restituiti sotto forma di file JSON. Si procede dunque al parsing dei campi di interesse all'interno di una Map creata per l'occasione.
+
+I **campi di interesse** scelti per l'analisi sono i seguenti: 
 
  - **Hashtag** 
 - **Data** 
@@ -30,15 +38,6 @@ I campi di interesse scelti per l'analisi sono i seguenti:
 
 Per il test della Web App viene utilizzato **POSTMAN**, un tool utile per il testing delle API.
 
-## Scelta degli Hashtag
-
-All'Avvio dell'Applicazione viene eseguito in automatico il Download dei Tweet relativi agli hashtag nel File di Testo ***hashtags.txt*** della cartella ***Files***.
-
-Se l'Utente **non** modifica il File, verranno scaricati gli hashtags già presenti nel suddetto.
-Il File di Testo deve essere scritto dall'Utente in modo tale che i nomi relativi a ciascun hashtag si trovino incolonnati uno sopra l'altro. Il File **non** deve essere vuoto. Inoltre **non** sono ammessi caratteri come lo spazio, o caratteri speciali (es: ***#***) sulla stessa riga.
-
-Eventuali errori di inserimento da parte dell'Utente sono gestiti in ogni caso da opportune Eccezioni.
-
 ## Utilizzo della Spring Web App
 
 La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni mediante richieste **API REST (GET o POST)** :
@@ -46,14 +45,14 @@ La Spring Web App da noi sviluppata permette di utilizzare le seguenti funzioni 
 
 |Tipo di Chiamata|Rotta| Descrizione |
 |--|--|--|
-|**GET**| **/metadata** | Elenco dei campi di interesse per l'analisi e il tipo di dati contenuti |
-|**GET**|**/data**| Elenco dei tweet raccolti
-|**POST**|**/data**| Elenco dei dati sottoposti a Filtri applicati dall'Utente  
-|**GET**|**/stats**| Statistiche su alcuni parametri dei posts
-|**POST**|**/stats**| Statistiche su alcuni parametri di posts, dopo essere stati filtrati
+|**GET**| **/metadata** | Elenco dei campi di interesse per l'analisi e il tipo di dato contenuto |
+|**GET**|**/data**| Elenco dei dati dei tweets raccolti
+|**POST**|**/data**| Elenco dei dati sottoposti a filtri applicati dall'utente  
+|**GET**|**/stats**| Statistiche su alcuni parametri dei tweets
+|**POST**|**/stats**| Statistiche su alcuni parametri dei tweets, dopo essere stati filtrati
 
 ## Rotte dell'applicazione
-Una volta avviata l'app, quest'ultima sarà in ascolto all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
+Avviata l'app, quest'ultima sarà raggiungibile all'indirizzo *localhost:8080*. Le seguenti rotte, con le relative richieste, possono essere inserite in Postman per accedere alle funzionalità dell'app:
 
 
 > **GET /metadata**
@@ -104,7 +103,7 @@ Questa particolare chiamata, a seguito dell'inserimento di determinati parametri
 
 > **POST /stats**
 
-È possibile ottenere Statistiche su un numero limitato di Dati. Infatti specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'Utente la possibilità di inserire un Filtro dei precedenti, per limitare il numero di Dati da Analizzare. In seguito all'inserimento del body saranno restituite delle Statistiche sui Tweet filtrati.    
+Questo metodo restituisce delle statistiche su un numero limitato di dati. Infatti, specificando la rotta ***/stats*** con chiamata ***POST***, viene data all'utente la possibilità di inserire un filtro per limitare il numero di dati da analizzare. In seguito all'inserimento dei parametri di filtraggio all'interno del body, verranno restituite delle statistiche sui tweets filtrati.    
 
 
 ## Filtri
@@ -113,24 +112,24 @@ I filtri realizzati sono i seguenti:
 
 |Chiave del Filtro| Descrizione |
 |--|--|
-| "#" | Filtra in base ad uno o più Hashtag |
-| "Language" | Filtra in base ad una o più Lingue 
-| "Followers" | Filtra i Tweet scritti dagli Account con un certo numero, o una fascia di Followers 
-| "Retweets" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di Retweets 
-| "Likes" | Filtra i Tweet che hanno avuto un certo numero, o una fascia di likes 
-| "After" | Filtra i Tweet scritti dopo una determinata Data e Ora 
-| "Before" | Filtra i Tweet scritti prima di una determinata Data e Ora 
-| "Between" | Filtra i Tweet compresi tra due determinate Date e Ore 
+| "#" | Filtra in base ad uno o più hashtag |
+| "Language" | Filtra in base ad una o più lingue 
+| "Followers" | Filtra i tweets scritti dagli accounts con un certo numero (oppure un intervallo) di followers 
+| "Retweets" | Filtra i tweets che hanno avuto un certo numero (oppure un intervallo) di retweets 
+| "Likes" | Filtra i tweets che hanno avuto un certo numero (oppure un intervallo) di likes 
+| "After" | Filtra i tweets scritti **dopo** una determinata Data e Ora 
+| "Before" | Filtra i tweets scritti **prima** di una determinata Data e Ora 
+| "Between" | Filtra i tweets **compresi** tra due determinate Date e Ore 
 
 ### "#":
 
-L'Utente può generare un body del tipo: 
+L'utente può generare un body del tipo: 
 
     {
       "#" : "Prada"
     }
 
-per avere restituiti soltanto i Tweets relativi all' hashtags Prada.
+per avere restituiti soltanto i tweets relativi all'hashtag Prada.
 
 Oppure può essere scritto un body del tipo: 
 
@@ -138,7 +137,7 @@ Oppure può essere scritto un body del tipo:
       "#" : [ "Prada", "Gucci", "Dior", ...]
     }
 
-per avere restituiti soltanto i Tweets relativi agli hashtag Prada, Gucci e Dior.
+per avere restituiti soltanto i tweets relativi agli hashtags Prada, Gucci e Dior.
 
 ### "Language":
 
@@ -148,7 +147,7 @@ L'Utente può generare un body del tipo:
       "Language" : "en"
     }
 
-per avere restituiti soltanto i Tweet scritti in Inglese.
+per avere restituiti soltanto i tweets scritti in lingua inglese.
 
 Oppure può essere scritto un body del tipo: 
 
@@ -156,8 +155,8 @@ Oppure può essere scritto un body del tipo:
       "Language" : [ "it", "es", "ja"]
     }
 
-per avere restituiti soltanto i Tweet scritti in Italiano, Spagnolo e Giapponese.
-È buona norma scrivere le lingue in conformazione al Codice di lingua IETF per non generare Eccezioni.
+per avere restituiti soltanto i tweets scritti in lingua italiana, spagnola e giapponese.
+È buona norma scrivere le lingue in conformazione al ***Codice di lingua IETF*** al fine di non generare eccezioni.
 
 ### "Followers", "Retweets", "Likes":
 
@@ -167,7 +166,7 @@ L'Utente può generare un body del tipo:
        KEY : [ ">", "150" ]
     }
 
-con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Maggiori di 150**.
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i tweets con numero di likes, retweets, o scritti da account con numero di followers **maggiori di 150**.
 
 Oppure può essere scritto un body del tipo: 
 
@@ -175,7 +174,7 @@ Oppure può essere scritto un body del tipo:
        KEY : [ "<", "150" ]
     }
 
-con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Minori di 150**.
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i tweets con numero di likes, retweets, o scritti da account con numero di followers **minori di 150**.
 
 Oppure può essere scritto un body del tipo: 
 
@@ -183,7 +182,7 @@ Oppure può essere scritto un body del tipo:
        KEY : [ "150", "350" ]
     }
 
-con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i Tweet con numero di likes, retweets, o scritti da account con numero di followers **Compresi tra 150 e 350**.
+con **KEY = "Followers"**, oppure **KEY = "Retweets"**, oppure **KEY = "Likes"** per avere restituiti soltanto i tweets con numero di likes, retweets, o scritti da account con numero di followers **compresi tra 150 e 350**.
 
 ### "After", "Before", "Between":
 
@@ -193,7 +192,7 @@ L'Utente può generare un body del tipo:
       "After" : "10/05/2020 15:30"
     }
 
-per avere restituiti soltanto i Tweet scritti **dopo** le 15:30 del giorno 10/05/2020.
+per avere restituiti soltanto i tweets scritti **dopo** le 15:30 del giorno 10/05/2020.
 
 Oppure può essere scritto un body del tipo: 
 
@@ -201,7 +200,7 @@ Oppure può essere scritto un body del tipo:
       "Before" : "10/05/2020 15:30"
     }
 
-per avere restituiti soltanto i Tweet scritti **prima** le 15:30 del giorno 10/05/2020.
+per avere restituiti soltanto i tweets scritti **prima** le 15:30 del giorno 10/05/2020.
 
 Oppure può essere scritto un body del tipo:
 
@@ -209,12 +208,12 @@ Oppure può essere scritto un body del tipo:
       "Between" : [ "10/05/2020 15:30", "12/05/2020 19:45" ]
     }
 
-per avere restituiti soltanto i Tweet scritti in una fascia di tempo **compresa** tra le ore 15:30 del giorno 10/05/2020 e le ore 19:45 del giorno 19:45.
-È buona norma seguire la formattazione delle date qui rappresentata al fine di non generare Eccezioni.
+per avere restituiti soltanto i tweets scritti in una fascia di tempo **compresa** tra le ore 15:30 del giorno 10/05/2020 e le ore 19:45 del giorno 19:45.
+È buona norma seguire la formattazione della data qui rappresentata al fine di non generare eccezioni.
 
 ### Filtri Complessi
 
-E' anche possibile costruire un Filtro Complesso, composto di più Body, per applicare più filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
+E' anche possibile costruire un filtro complesso, composto di più parametri, per applicare molteplici filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
     [
       {
@@ -228,7 +227,7 @@ E' anche possibile costruire un Filtro Complesso, composto di più Body, per app
       }
     ]
 
-È buona norma non utilizzare chiavi duplicate al fine di non generare Eccezioni.
+È buona norma non utilizzare chiavi duplicate al fine di non generare eccezioni.
 
 ## Gestione delle eccezioni
 
@@ -243,6 +242,10 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 |**IllegalFilterValueSizeException**| Se uno dei valori inseriti dall'utente nel filtro è di dimensione **NON** consentita
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
 |**StatisticsNotAppliedException**| Se per qualche ragione non è stato possibile calcolare Statistiche sui Tweet
+
+## CLASSI DI TEST
+
+**DA INSERIRE**
 
 ## UML
 
