@@ -309,31 +309,6 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 ![Filter](UML/FilterPackageUML.jpg)
 
 
-**GET /metadata**
-
-![Metadata](UML/getMetadataUML.jpg)
-
-
-**GET /data**
-
-![Data](UML/getDataUML.jpg)
-
-
-**POST /data**
-
-![Data](UML/postDataUML.jpg)
-
-
-**GET /stats**
-
-![Stats](UML/getStatsUML.jpg)
-
-
-**POST /stats**
-
-![Stats](UML/postStatsUML.jpg)
-
-
 **com.univpm.TweetAnalyzer.VariousTests**
 
 ![ActualData](UML/ActualDataTestPackageDiagran.jpg)
@@ -362,6 +337,29 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 **com.univpm.TweetAnalyzer.VariousTests.StatsTest**
 
 ![StatsTest](UML/StatsTestPackageDiagrams.jpg)
+**GET /metadata**
+
+![Metadata](UML/getMetadataUML.jpg)
+
+
+**GET /data**
+
+![Data](UML/getDataUML.jpg)
+
+
+**POST /data**
+
+![Data](UML/postDataUML.jpg)
+
+
+**GET /stats**
+
+![Stats](UML/getStatsUML.jpg)
+
+
+**POST /stats**
+
+![Stats](UML/postStatsUML.jpg)
 
 
 ## Software utilizzati
