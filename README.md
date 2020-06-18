@@ -276,7 +276,7 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 ### CLASS DIAGRAMS
 
-**com.univpm.TweetAnalyzer.DatabaseClass**
+**com.univpm.TweetAnalyzer.bin**
 
 ![Bin](UML/BinPackageUML.jpg)
 
@@ -301,7 +301,7 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 ![Exception](UML/ExceptionPackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.Service**
+**com.univpm.TweetAnalyzer.service**
 
 ![Service](UML/ServicePackageUML.jpg)
 
