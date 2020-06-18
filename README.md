@@ -243,23 +243,24 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 |**IllegalFilterKeyException**| Se una delle chiavi inserite dall'utente nel filtro è errata
 |**StatisticsNotAppliedException**| Se per qualche ragione non è stato possibile calcolare Statistiche sui Tweet
 
-## CLASSI DI TEST
+## Classi di test (JUnit 5)
 
-Sono state realizzate anche 5 classi di test con il framework JUnit 5, per andare a verificare il corretto funzionamento delle varie componenti dell'applicazione. 
+Sono state realizzate anche 5 classi di test con il **framework JUnit 5**, per andare a verificare il corretto funzionamento delle varie componenti dell'applicazione. 
 
 Dapprima è stato inizializzato un database fittizio (ActualData), che simula la presenza di dati di alcuni posts, legati ai metadata già specificati. 
 
 Successivamente, sono stati testati alcuni metodi **fondamentali** del programma tramite i metodi di **assert** (nello specifico **assertEquals(), assertIterableEquals(), assertThrows()**). 
 
-Le seguenti classi servono a confrontare il risultato aspettato (***expected***) con il risultato reale (***actual***) ritornato dal metodo usato, per verificarne l'esattezza: 
+Le seguenti classi servono a confrontare il risultato aspettato (***expected***) con il risultato reale (***actual***), per verificarne l'esattezza: 
 
 | Classe di test | Descrizione | Tipo di assert
 |--|--|--|
-| **DatabaseClassTest** | Testa la corretta lettura degli hashtags dal file di testo nel path specificato, confrontandoli con il risultato aspettato | assertIterableEquals()
+| **DatabaseClassTest** | Testa la corretta la corretta lettura degli hashtag dal file di testo nel path specificato | assertIterableEquals()
 |**ProperFilterTest**| Testa l'applicazione di un filtro sbagliato al metodo filterParsing(), e il conseguente throws di un'eccezione personalizzata| assertThrows()
 | **FilterTest**| Test di un filtro complesso (Between + Language) applicato al metodo filterParsing()| assertEquals()
 |**StatisticServiceTest**|Test del metodo doStats(), applicato al database fittizio ActualData|assertEquals()
-|**StatsFiltersTest**| Test stats+filter che simula la richiesta di POST /stats, ovvero le statistiche su un database già filtrato| assertEquals()
+|**StatsFiltersTest**| Test stats+filter che simula la richiesta di POST su rotta /stats, ovvero le statistiche su un database già filtrato| assertEquals()
+
 
 ## UML
 
@@ -331,3 +332,18 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 **POST /stats**
 
 ![Stats](UML/postStatsUML.jpg)
+
+
+## Software utilizzati
+
+ - [**Eclipse**](https://www.eclipse.org) - ambiente di sviluppo integrato
+ - [**IntelliJ IDEA**](https://www.jetbrains.com/idea/) - ambiente di sviluppo integrato
+ - [**UML Designer**](http://www.umldesigner.org) - editor di diagrammi UML
+ - [**Spring Boot**](https://spring.io) - framework per sviluppo applicazioni web Java
+ - [**JUnit 5**](https://junit.org/junit5/) - framework per classi di test 
+ - [**Maven**](https://maven.apache.org) - strumento di gestione delle dipendenze
+
+## Autori
+
+ - **Kevin Giannattasio** - [GitHub](https://github.com/Asso-Di-Picche)
+ - **Antonio Baio** - [GitHub](https://github.com/Antonet99)
