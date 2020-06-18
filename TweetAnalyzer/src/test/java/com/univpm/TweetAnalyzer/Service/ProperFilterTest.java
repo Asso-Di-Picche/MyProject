@@ -18,6 +18,7 @@ import java.util.Map;
  * AssertThrows test sull'applicazione di un filtro sbagliato. Passando al metodo filterParsing(filter)
  * un "filter" con una chiave errata (non esistente), viene lanciata l'eccezione personalizzata IllegalFilterKeyException.
  */
+
 class ProperFilterTest {
 
     private static Map<String, String> filter = new LinkedHashMap<String, String>();

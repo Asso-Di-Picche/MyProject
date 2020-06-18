@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tramite un assertEquals, viene confrontato con un altro database costruito per l'occasione,
  * ovvero dei dati che ci aspettiamo dal metodo doStats() (ExpectedStats).
  */
+
 class StatisticsServiceTest {
 
     private static Map<String, Map<Integer, Data>> actualData = ActualData.getDatasToTest();

@@ -23,6 +23,7 @@ import java.util.Map;
  * si ricava un database filtrato, si applica il metodo doStats() su questo database,
  * ricavandone le statistiche.
  */
+
 public class StatsFiltersTest {
 
     private static Map<String, Map<Integer, Data>> dataTest = ActualData.getDatasToTest();
