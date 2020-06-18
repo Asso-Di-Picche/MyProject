@@ -266,7 +266,7 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 **PACKAGE**
 
-![Package](UML/Package.jpg)
+![Package](UML/PackageDiagram.jpg)
 
 
 **USE CASE DIAGRAM**
@@ -333,29 +333,33 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 ![Stats](UML/postStatsUML.jpg)
 
-## UML classi di test
 
-**ActualData**
+**com.univpm.TweetAnalyzer.VariousTests**
 
 ![ActualData](UML/ActualDataTestPackageDiagran.jpg)
 
-**ComplexFilterTest**
+
+**com.univpm.TweetAnalyzer.VariousTests.filtersTest**
 
 ![ComplexFilterTest](UML/ComplexFilterTestPackageDiagrams.jpg)
 
-**DatabaseTestClass**
+
+**com.univpm.TweetAnalyzer.DatabaseClass**
 
 ![DatabaseTestClass](UML/DatabaseTestClass.jpg)
 
-**FilterTest**
+
+**com.univpm.TweetAnalyzer.Service**
 
 ![FilterTest](UML/FilterTestPackageDiagram.jpg)
 
-**StatsOnFilter**
+
+**com.univpm.TweetAnalyzer.VariousTests.StatsFiltersTest**
 
 ![StatsOnFilter](UML/StatsOnFilterTestPackageDiagrams.jpg)
 
-**StatsTest**
+
+**com.univpm.TweetAnalyzer.VariousTests.StatsTest**
 
 ![StatsTest](UML/StatsTestPackageDiagrams.jpg)
 
