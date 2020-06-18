@@ -213,7 +213,7 @@ per avere restituiti soltanto i tweets scritti in una fascia di tempo **compresa
 
 ### Filtri Complessi
 
-E' anche possibile costruire un filtro complesso, composto di più parametri, per applicare molteplici filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
+È anche possibile costruire un filtro complesso, composto di più parametri, per applicare molteplici filtri di diversa natura, per esempio rispetto ad uno o più hashtags, uniti ad una data o un linguaggio
 
     [
       {
