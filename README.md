@@ -245,7 +245,21 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 
 ## CLASSI DI TEST
 
-**DA INSERIRE**
+Sono state realizzate anche 5 classi di test, per andare a verificare il corretto funzionamento delle varie componenti dell'applicazione. 
+
+Dapprima è stato inizializzato un database fittizio (ActualData), che simula la presenza di dati di alcuni posts, legati ai metadata già specificati. 
+
+Successivamente, sono stati testati alcuni metodi **fondamentali** del programma tramite i metodi di **assert** (nello specifico **assertEquals(), assertIterableEquals(), assertThrows()**). 
+
+Le seguenti classi servono a confrontare il risultato aspettato (***expected***) con il risultato reale (***actual***) ritornato dal metodo usato, per verificarne l'esattezza: 
+
+| Classe di test | Descrizione | Tipo di assert
+|--|--|--|
+| **DatabaseClassTest** | Testa la corretta lettura degli hashtags dal file di testo nel path specificato, confrontandoli con il risultato aspettato | assertIterableEquals()
+|**ProperFilterTest**| Testa l'applicazione di un filtro sbagliato al metodo filterParsing(), e il conseguente throws di un'eccezione personalizzata| assertThrows()
+| **FilterTest**| Test di un filtro complesso (Between + Language) applicato al metodo filterParsing()| assertEquals()
+|**StatisticServiceTest**|Test del metodo doStats(), applicato al database fittizio ActualData|assertEquals()
+|**StatsFiltersTest**| Test stats+filter che simula la richiesta di POST /stats, ovvero le statistiche su un database già filtrato| assertEquals()
 
 ## UML
 
