@@ -245,7 +245,7 @@ Sono state sviluppate anche delle eccezioni personalizzate, che vengono lanciate
 
 ## CLASSI DI TEST
 
-Sono state realizzate anche 5 classi di test, per andare a verificare il corretto funzionamento delle varie componenti dell'applicazione. 
+Sono state realizzate anche 5 classi di test con il framework JUnit 5, per andare a verificare il corretto funzionamento delle varie componenti dell'applicazione. 
 
 Dapprima è stato inizializzato un database fittizio (ActualData), che simula la presenza di dati di alcuni posts, legati ai metadata già specificati. 
 
