@@ -2,7 +2,7 @@ package com.univpm.TweetAnalyzer.util.filter;
 
 import java.util.Map;
 
-import com.univpm.TweetAnalyzer.DatabaseClassTest.DatabaseClass;
+import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
 
 public abstract class BasicFilter implements Filter{
 	

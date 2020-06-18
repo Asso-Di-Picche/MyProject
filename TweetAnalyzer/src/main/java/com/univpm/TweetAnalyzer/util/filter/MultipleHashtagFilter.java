@@ -1,20 +1,22 @@
-package com.univpm.TweetAnalyzer.VariousTest.filtersTest;
+package com.univpm.TweetAnalyzer.util.filter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.model.Data;
 
 /**
- * Questa è la Classe le cui Istanze sono Filtri che vengono Applicati in base ad un Hashtag
- * inserito dall'Utente.
+ * Questa è la Classe le cui Istanze sono Filtri da Applicare in base a più Hashtag
+ * inseriti dall'Utente.
  */
 
-public class SingleHashtagFilter extends BasicFilter{
-	private String filterValue;
+public class MultipleHashtagFilter extends BasicFilter{
+	private ArrayList<String> filterValue;
 	
-	public SingleHashtagFilter(Map<String, Map<Integer, Data>> tempData, String filterType, String filterValue){
+	public MultipleHashtagFilter(Map<String, Map<Integer, Data>> tempData, String filterType, ArrayList<String> filterValue) {
 		super(tempData, filterType);
 		this.filterValue = filterValue;
 	}
@@ -27,9 +29,13 @@ public class SingleHashtagFilter extends BasicFilter{
 		Map<String, Map<Integer, Data>> filteredData = new HashMap<String, Map<Integer,Data>>();
 		
 		try {
-			for(Map.Entry<String, Map<Integer, Data>> entry: tempData.entrySet())
-				if(this.filterValue.equals(entry.getKey()))
-					filteredData.put(entry.getKey(), entry.getValue());
+			for(Map.Entry<String, Map<Integer, Data>> entry : tempData.entrySet()) {
+				Iterator<String> iterator = this.filterValue.iterator();
+				while(iterator.hasNext()) {
+					if(( iterator.next() ).equals( entry.getKey()) )
+						filteredData.put(entry.getKey(), entry.getValue());
+				}
+			}
 			
 			if(filteredData.isEmpty())
 				throw new IllegalFilterValueException();

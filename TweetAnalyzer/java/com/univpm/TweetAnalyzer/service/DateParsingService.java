@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.ServiceTest;
+package com.univpm.TweetAnalyzer.Service;
 
 import java.util.Map;
 import java.util.Scanner;

@@ -1,8 +1,8 @@
 package com.univpm.TweetAnalyzer.VariousTest.StatsFiltersTest;
 
 
-import com.univpm.TweetAnalyzer.ServiceTest.FilterService;
-import com.univpm.TweetAnalyzer.ServiceTest.StatisticsService;
+import com.univpm.TweetAnalyzer.Service.FilterService;
+import com.univpm.TweetAnalyzer.Service.StatisticsService;
 import com.univpm.TweetAnalyzer.VariousTest.ActualData;
 import com.univpm.TweetAnalyzer.exception.*;
 import com.univpm.TweetAnalyzer.model.Data;

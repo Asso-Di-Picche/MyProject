@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.ServiceTest;
+package com.univpm.TweetAnalyzer.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,16 +13,16 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 import com.univpm.TweetAnalyzer.model.Data;
 import com.univpm.TweetAnalyzer.model.time.Time;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.Filter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.FollowersFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.LikesFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.MultipleDateFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.MultipleHashtagFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.MultipleLanguageFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.RetweetsFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.SingleDateFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.SingleHashtagFilter;
-import com.univpm.TweetAnalyzer.VariousTest.filtersTest.SingleLanguageFilter;
+import com.univpm.TweetAnalyzer.util.filter.Filter;
+import com.univpm.TweetAnalyzer.util.filter.FollowersFilter;
+import com.univpm.TweetAnalyzer.util.filter.LikesFilter;
+import com.univpm.TweetAnalyzer.util.filter.MultipleDateFilter;
+import com.univpm.TweetAnalyzer.util.filter.MultipleHashtagFilter;
+import com.univpm.TweetAnalyzer.util.filter.MultipleLanguageFilter;
+import com.univpm.TweetAnalyzer.util.filter.RetweetsFilter;
+import com.univpm.TweetAnalyzer.util.filter.SingleDateFilter;
+import com.univpm.TweetAnalyzer.util.filter.SingleHashtagFilter;
+import com.univpm.TweetAnalyzer.util.filter.SingleLanguageFilter;
 
 /**
  * Questa è la Classe che si occupa della Gestione dei Filtri JSON.

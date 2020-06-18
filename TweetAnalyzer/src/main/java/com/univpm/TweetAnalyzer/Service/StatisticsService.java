@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.ServiceTest;
+package com.univpm.TweetAnalyzer.Service;
 
 import com.univpm.TweetAnalyzer.exception.StatisticsNotAppliedException;
 import com.univpm.TweetAnalyzer.model.Data;

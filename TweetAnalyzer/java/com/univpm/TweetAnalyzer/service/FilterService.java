@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.ServiceTest;
+package com.univpm.TweetAnalyzer.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.univpm.TweetAnalyzer.DatabaseClassTest.DatabaseClass;
+import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.FilterNotFoundException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;

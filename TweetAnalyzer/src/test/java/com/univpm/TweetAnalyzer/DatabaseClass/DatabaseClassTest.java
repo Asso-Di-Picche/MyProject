@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.DatabaseClassTest;
+package com.univpm.TweetAnalyzer.DatabaseClass;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;

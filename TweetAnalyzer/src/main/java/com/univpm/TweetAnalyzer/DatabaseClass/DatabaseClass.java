@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.DatabaseClassTest;
+package com.univpm.TweetAnalyzer.DatabaseClass;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

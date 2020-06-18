@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.VariousTest.filtersTest;
+package com.univpm.TweetAnalyzer.util.filter;
 
 import java.util.HashMap;
 import java.util.Iterator;

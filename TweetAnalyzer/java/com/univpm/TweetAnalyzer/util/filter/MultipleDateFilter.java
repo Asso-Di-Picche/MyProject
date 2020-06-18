@@ -10,7 +10,7 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 import com.univpm.TweetAnalyzer.model.Data;
 import com.univpm.TweetAnalyzer.model.time.Time;
-import com.univpm.TweetAnalyzer.ServiceTest.DateParsingService;
+import com.univpm.TweetAnalyzer.Service.DateParsingService;
 
 public class MultipleDateFilter extends BasicFilter{
 	private SingleDateFilter[] filterDate;

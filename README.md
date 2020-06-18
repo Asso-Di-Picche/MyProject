@@ -273,7 +273,7 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 ![UseCase](UML/UseCaseDiagram.jpg)
 
 
-**com.univpm.TweetAnalyzer.DatabaseClassTest**
+**com.univpm.TweetAnalyzer.DatabaseClass**
 
 ![Bin](UML/BinPackageUML.jpg)
 
@@ -298,7 +298,7 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 ![Exception](UML/ExceptionPackageUML.jpg)
 
 
-**com.univpm.TweetAnalyzer.ServiceTest**
+**com.univpm.TweetAnalyzer.Service**
 
 ![Service](UML/ServicePackageUML.jpg)
 

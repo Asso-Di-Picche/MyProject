@@ -1,6 +1,6 @@
-package com.univpm.TweetAnalyzer.ServiceTest;
+package com.univpm.TweetAnalyzer.Service;
 
-import com.univpm.TweetAnalyzer.DatabaseClassTest.DatabaseClass;
+import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 
 import org.junit.jupiter.api.DisplayName;

@@ -3,7 +3,7 @@ package com.univpm.TweetAnalyzer.VariousTest.filtersTest;
 import com.univpm.TweetAnalyzer.VariousTest.ActualData;
 import com.univpm.TweetAnalyzer.exception.*;
 import com.univpm.TweetAnalyzer.model.Data;
-import com.univpm.TweetAnalyzer.ServiceTest.FilterService;
+import com.univpm.TweetAnalyzer.Service.FilterService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
