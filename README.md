@@ -156,7 +156,7 @@ Oppure può essere scritto un body del tipo:
     }
 
 per avere restituiti soltanto i tweets scritti in lingua italiana, spagnola e giapponese.
-È buona norma scrivere le lingue in conformazione al ***Codice di lingua IETF*** al fine di non generare eccezioni.
+È buona norma scrivere le lingue in conformazione al ***Codice di lingua IETF***, al fine di non generare eccezioni.
 
 ### "Followers", "Retweets", "Likes":
 
@@ -208,8 +208,8 @@ Oppure può essere scritto un body del tipo:
       "Between" : [ "10/05/2020 15:30", "12/05/2020 19:45" ]
     }
 
-per avere restituiti soltanto i tweets scritti in una fascia di tempo **compresa** tra le ore 15:30 del giorno 10/05/2020 e le ore 19:45 del giorno 19:45.
-È buona norma seguire la formattazione della data qui rappresentata al fine di non generare eccezioni.
+per avere restituiti soltanto i tweets scritti in una fascia di tempo **compresa** tra le ore 15:30 del giorno 10/05/2020 e le ore 19:45 del giorno 12/05/2020.
+È buona norma seguire la formattazione della data qui rappresentata, al fine di non generare eccezioni.
 
 ### Filtri Complessi
 
