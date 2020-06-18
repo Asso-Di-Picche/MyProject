@@ -333,6 +333,32 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 ![Stats](UML/postStatsUML.jpg)
 
+## UML classi di test
+
+**ActualData**
+
+![ActualData](UML/ActualDataTestPackageDiagran.jpg)
+
+**ComplexFilterTest**
+
+![ComplexFilterTest](UML/ComplexFilterTestPackageDiagrams.jpg)
+
+**DatabaseTestClass**
+
+![DatabaseTestClass](UML/DatabaseTestClass.jpg)
+
+**FilterTest**
+
+![FilterTest](UML/FilterTestPackageDiagram.jpg)
+
+**StatsOnFilter**
+
+![StatsOnFilter](UML/StatsOnFilterTestPackageDiagrams.jpg)
+
+**StatsTest**
+
+![StatsTest](UML/StatsTestPackageDiagrams.jpg)
+
 
 ## Software utilizzati
 
