@@ -264,15 +264,17 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 ## UML
 
-**PACKAGE**
+### PACKAGE
 
 ![Package](UML/PackageDiagram.jpg)
 
 
-**USE CASE DIAGRAM**
+### USE CASE DIAGRAM
 
 ![UseCase](UML/UseCaseDiagram.jpg)
 
+
+### CLASS DIAGRAMS
 
 **com.univpm.TweetAnalyzer.DatabaseClass**
 
@@ -338,6 +340,8 @@ Le seguenti classi servono a confrontare il risultato aspettato (***expected***)
 
 ![StatsTest](UML/StatsTestPackageDiagrams.jpg)
 
+
+### SEQUENCE DIAGRAMS
 
 **GET /metadata**
 
