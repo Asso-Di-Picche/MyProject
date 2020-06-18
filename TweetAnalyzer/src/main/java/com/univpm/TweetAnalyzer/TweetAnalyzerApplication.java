@@ -20,7 +20,7 @@ public class TweetAnalyzerApplication {
 	 */
 	
 	public static void main(String[] args) throws IOException, InterruptedException{
-		
+		int a = 0;
 		SpringApplication.run(TweetAnalyzerApplication.class, args);
 		DatabaseClass database = new DatabaseClass();
 	}
