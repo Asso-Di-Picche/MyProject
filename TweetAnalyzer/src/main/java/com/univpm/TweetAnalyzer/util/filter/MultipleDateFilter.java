@@ -10,7 +10,7 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 import com.univpm.TweetAnalyzer.model.Data;
 import com.univpm.TweetAnalyzer.model.time.Time;
-import com.univpm.TweetAnalyzer.Service.DateParsingService;
+import com.univpm.TweetAnalyzer.service.DateParsingService;
 
 /**
  * Questa è la Classe le cui Istanze sono Filtri che vengono Applicati in base ad una

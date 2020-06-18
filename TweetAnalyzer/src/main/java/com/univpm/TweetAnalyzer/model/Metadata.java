@@ -6,11 +6,11 @@ package com.univpm.TweetAnalyzer.model;
 
 public class Metadata {
 	
-	private String Metadata, WrapperClass;
+	private String Metadata, Type;
 	
-	public Metadata(String Metadata, String WrapperClass) {
+	public Metadata(String Metadata, String Type) {
 		this.Metadata = Metadata;
-		this.WrapperClass = WrapperClass;
+		this.Type = Type;
 	}
 
 	public String getMetadata() {
@@ -21,12 +21,12 @@ public class Metadata {
 		Metadata = metadata;
 	}
 
-	public String getWrapperClass() {
-		return WrapperClass;
+	public String getType() {
+		return Type;
 	}
 
-	public void setWrapperClass(String wrapperClass) {
-		WrapperClass = wrapperClass;
+	public void setType(String Type) {
+		this.Type = Type;
 	}
 	
 }

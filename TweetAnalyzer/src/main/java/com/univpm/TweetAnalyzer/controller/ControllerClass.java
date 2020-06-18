@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
+import com.univpm.TweetAnalyzer.bin.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.DuplicateFilterException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterValueException;
@@ -17,8 +17,8 @@ import com.univpm.TweetAnalyzer.exception.IllegalFilterValueSizeException;
 import com.univpm.TweetAnalyzer.exception.IllegalTimeException;
 import com.univpm.TweetAnalyzer.exception.StatisticsNotAppliedException;
 import com.univpm.TweetAnalyzer.model.Data;
-import com.univpm.TweetAnalyzer.Service.FilterService;
-import com.univpm.TweetAnalyzer.Service.StatisticsService;
+import com.univpm.TweetAnalyzer.service.FilterService;
+import com.univpm.TweetAnalyzer.service.StatisticsService;
 
 /**
  * Classe che gestisce tutte le Rotte e le Chiamate 

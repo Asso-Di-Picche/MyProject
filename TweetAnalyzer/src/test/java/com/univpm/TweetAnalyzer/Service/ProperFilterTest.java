@@ -1,7 +1,8 @@
 package com.univpm.TweetAnalyzer.Service;
 
-import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
+import com.univpm.TweetAnalyzer.bin.DatabaseClass;
 import com.univpm.TweetAnalyzer.exception.IllegalFilterKeyException;
+import com.univpm.TweetAnalyzer.service.FilterService;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -20,11 +21,11 @@ import java.util.Map;
 class ProperFilterTest {
 
     private static Map<String, String> filter = new LinkedHashMap<String, String>();
-    private Exception IllegalFilterKeyException;
 
     /**
-     * Filter test.
+     * Il Metodo che Effettua il Test.
      */
+    
     @Test
     @DisplayName("Verifica filtro passato ed eccezione")
     @Tag("Filter")

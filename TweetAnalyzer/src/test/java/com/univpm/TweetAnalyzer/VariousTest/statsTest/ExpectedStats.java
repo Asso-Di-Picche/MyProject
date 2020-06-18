@@ -6,17 +6,19 @@ import java.util.ArrayList;
 
 
 /**
- * Costruzione del database che ci aspettiamo.
+ * Costruzione del database che ci aspettiamo come Risultato Atteso dal Test su Filtri+Stats.
  */
+
 public class ExpectedStats {
 
     private static ArrayList<SingleStats> hashtags = new ArrayList<SingleStats>();
 
     /**
-     * Inserisco i dati nel database.
-     *
+     * Metodo nel quale vengono costruiti manualmente i Dati che ci si aspetta
+     * come Risultato del Test..
      * @return the array list
      */
+    
     public static ArrayList<SingleStats> dataInsertion() {
 
         SingleStats prada = new SingleStats(
@@ -47,10 +49,9 @@ public class ExpectedStats {
     }
 
     /**
-     * Gets hashtags.
-     *
-     * @return dataInsertion()
+     * Metodo che restituisce il Risultato Atteso.
      */
+    
     public static ArrayList<SingleStats> getHashtags() {
         return dataInsertion();
     }

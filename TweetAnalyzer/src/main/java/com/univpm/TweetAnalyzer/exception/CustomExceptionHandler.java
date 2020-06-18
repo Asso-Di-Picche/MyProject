@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.univpm.TweetAnalyzer.model.ErrorResponse;
 
 /**
- * In questa Classe vengono Gestite le Eccezioni Peronalizzate
+ * In questa Classe vengono Gestite le Eccezioni Personalizzate
  */
 
 @ControllerAdvice
@@ -22,7 +22,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 	/**
 	 * Questo Metodo inizializza un Oggetto di tipo Error mediante una Stringa.
 	 * @param ex Contiene l'Eccezione che è stata lanciata.
-	 * @param SolutionDetails contiene informazioni su come evitare il lancio dell'Eccezione.
+	 * @param SolutionDetails contiene informazioni su come evitare un nuovo lancio dell'Eccezione.
 	 * @return un Oggetto Error con Informazioni riguardanti il lancio di un'Eccezione.
 	 */
 	
@@ -39,7 +39,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
 	/**
 	 * Questo Metodo inizializza un Oggetto di tipo Error mediante una Mappa.
 	 * @param ex Contiene l'Eccezione che è stata lanciata.
-	 * @param SolutionDetails contiene informazioni su come evitare il lancio dell'Eccezione.
+	 * @param SolutionDetails contiene informazioni su come evitare un nuovo lancio dell'Eccezione.
 	 * @return un Oggetto Error con Informazioni riguardanti il lancio di un'Eccezione.
 	 */
 	

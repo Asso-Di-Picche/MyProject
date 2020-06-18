@@ -1,8 +1,8 @@
 package com.univpm.TweetAnalyzer.VariousTest.StatsFiltersTest;
 
 
-import com.univpm.TweetAnalyzer.Service.FilterService;
-import com.univpm.TweetAnalyzer.Service.StatisticsService;
+import com.univpm.TweetAnalyzer.service.FilterService;
+import com.univpm.TweetAnalyzer.service.StatisticsService;
 import com.univpm.TweetAnalyzer.VariousTest.ActualData;
 import com.univpm.TweetAnalyzer.exception.*;
 import com.univpm.TweetAnalyzer.model.Data;
@@ -33,15 +33,16 @@ public class StatsFiltersTest {
 
 
     /**
-     * Stats filter test.
+     * Il Metodo che Effettua il Test.
      *
-     * @throws DuplicateFilterException        the duplicate filter exception
-     * @throws IllegalFilterValueSizeException the illegal filter value size exception
-     * @throws IllegalFilterValueException     the illegal filter value exception
-     * @throws IllegalFilterKeyException       the illegal filter key exception
-     * @throws IllegalTimeException            the illegal time exception
-     * @throws StatisticsNotAppliedException   the statistics not applied exception
+	 * @throws DuplicateFilterException Se vengono inseriti più Filtri dello stesso Tipo.
+	 * @throws IllegalFilterValueException Se viene inserito un Filtro con Campo Value NON riconosciuto.
+	 * @throws IllegalTimeException Se viene inserito un Filtro con una Data NON ammessa.
+	 * @throws IllegalFilterValueSizeException Se Viene inserito un Filtro con Campo Value di Dimensione NON consentita.
+	 * @throws IllegalFilterKeyException Se viene inserito un Filtro con una Chiave NON esistente.
+     * @throws StatisticsNotAppliedException Se ci sono stati Errori nei Calcoli delle Statistiche.
      */
+    
     @Test
     @DisplayName("Test su filtro + statistiche")
     public void StatsFilterTest() throws DuplicateFilterException, IllegalFilterValueSizeException, IllegalFilterValueException, IllegalFilterKeyException, IllegalTimeException, StatisticsNotAppliedException {

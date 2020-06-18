@@ -23,6 +23,21 @@ public class TotalStats {
         this.Hashtags = Hashtags;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TotalStats)) return false;
+        TotalStats that = (TotalStats) o;
+        return totRetweets == that.totRetweets &&
+                totLikes == that.totLikes &&
+                Hashtags.equals(that.Hashtags);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(totRetweets, totLikes, Hashtags);
+    }
+
 	public void setHashtags(ArrayList<SingleStats> Hashtags) {
 		this.Hashtags = Hashtags;
 	}
@@ -42,19 +57,5 @@ public class TotalStats {
     public void setTotLikes(long totLikes) {
         this.totLikes = totLikes;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TotalStats)) return false;
-        TotalStats that = (TotalStats) o;
-        return totRetweets == that.totRetweets &&
-                totLikes == that.totLikes &&
-                Hashtags.equals(that.Hashtags);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(totRetweets, totLikes, Hashtags);
-    }
+    
 }

@@ -5,6 +5,10 @@ import com.univpm.TweetAnalyzer.model.Data;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Questa è la Classe che contiene il Risultato Atteso dal Test sui Filtri.
+ */
+
 public class ExpectedData {
 
     private static Map<String, Map<Integer, Data>> expectedData = new HashMap<String, Map<Integer, Data>>();
@@ -12,6 +16,11 @@ public class ExpectedData {
     public static Map<String, Map<Integer, Data>> getExpectedData() {
         return expectedDataInsertion();
     }
+    
+    /**
+     * In questo Metodo viene riempita la Map che si ritiene sarà il risultato
+     * del Test sui Filtri.
+     */
     
     public static Map<String, Map<Integer, Data>> expectedDataInsertion() {
 

@@ -1,4 +1,4 @@
-package com.univpm.TweetAnalyzer.Service;
+package com.univpm.TweetAnalyzer.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -27,6 +27,24 @@ public class SingleStats {
     	this.PostsPerDay = PostsPerDay;
         
     }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof SingleStats)) return false;
+		SingleStats that = (SingleStats) o;
+		return Likes == that.Likes &&
+				Retweets == that.Retweets &&
+				Double.compare(that.PostsPerDay, PostsPerDay) == 0 &&
+				Hashtag.equals(that.Hashtag) &&
+				PercLikes.equals(that.PercLikes) &&
+				PercRetweets.equals(that.PercRetweets);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Hashtag, PercLikes, PercRetweets, Likes, Retweets, PostsPerDay);
+	}
     
 	public String getHashtag() {
 		return Hashtag;
@@ -75,22 +93,5 @@ public class SingleStats {
 	public void setPercRetweets(String percRetweets) {
 		PercRetweets = percRetweets;
 	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof SingleStats)) return false;
-		SingleStats that = (SingleStats) o;
-		return Likes == that.Likes &&
-				Retweets == that.Retweets &&
-				Double.compare(that.PostsPerDay, PostsPerDay) == 0 &&
-				Hashtag.equals(that.Hashtag) &&
-				PercLikes.equals(that.PercLikes) &&
-				PercRetweets.equals(that.PercRetweets);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(Hashtag, PercLikes, PercRetweets, Likes, Retweets, PostsPerDay);
-	}
+	
 }

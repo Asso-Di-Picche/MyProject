@@ -4,10 +4,20 @@ import com.univpm.TweetAnalyzer.model.SingleStats;
 
 import java.util.ArrayList;
 
+/**
+ * Questa è la Classe che contiene il Risultato Atteso dal Test sulle Statistiche
+ * applicate ad un Database Filtrato.
+ */
+
 public class ExpectedStatsFilters {
 
     private static ArrayList<SingleStats> expected = new ArrayList<SingleStats>();
 
+    /**
+     * Il Metodo nel quale viene costruito il Risultato che ci si aspetta
+     * in seguito al Test.
+     */
+    
     public static ArrayList<SingleStats> dataInsertion() {
 
         SingleStats prada = new SingleStats(

@@ -2,7 +2,7 @@ package com.univpm.TweetAnalyzer.VariousTest.statsTest;
 
 import com.univpm.TweetAnalyzer.exception.StatisticsNotAppliedException;
 import com.univpm.TweetAnalyzer.model.Data;
-import com.univpm.TweetAnalyzer.Service.StatisticsService;
+import com.univpm.TweetAnalyzer.service.StatisticsService;
 import com.univpm.TweetAnalyzer.VariousTest.ActualData;
 import com.univpm.TweetAnalyzer.model.TotalStats;
 import org.junit.jupiter.api.DisplayName;

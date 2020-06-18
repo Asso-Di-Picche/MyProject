@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.univpm.TweetAnalyzer.DatabaseClass.DatabaseClass;
+import com.univpm.TweetAnalyzer.bin.DatabaseClass;
 
 /**
  * Questa è la Classe di Entry Point dell'Applicazione.

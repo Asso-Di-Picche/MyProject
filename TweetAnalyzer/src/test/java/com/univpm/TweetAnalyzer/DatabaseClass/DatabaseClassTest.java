@@ -3,9 +3,6 @@ package com.univpm.TweetAnalyzer.DatabaseClass;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 
 
@@ -26,10 +23,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseClassTest {
 
-    private static final String path = "/Users/antoniobaio/Desktop/Progetto/Project/TweetAnalyzer/Files/hashtags.txt";
+    private static final String path = "Files/hashtags.txt";
     private static ArrayList<String> hashtag = new ArrayList<String>();
     private static String[] hashArray = {"Prada", "Armani", "Ferragamo", "Gucci", "Versace", "Trussardi", "Valentino", "Zegna", "Dior", "Benetton"};
 
+    /**
+     * Il Metodo che Effettua il Test.
+     * @throws FileNotFoundException Se non viene trovata la Directory contenente gli hashtags.
+     */
+    
     @Test
     @DisplayName("Test simulazione caricamento hashtag")
     @Tag("hashtag")
